@@ -47,6 +47,7 @@
     <script src="https://npmcdn.com/aframe-event-set-component@4.1.2"></script>
     <script src="https://unpkg.com/aframe-layout-component@4.2/dist/aframe-layout-component.min.js"></script> 
     <script src="https://unpkg.com/aframe-template-component@^3.1.1/dist/aframe-template-component.min.js"></script> 
+    <script src="https://unpkg.com/aframe-look-at-component@0.5.1/dist/aframe-look-at-component.min.js"></script>
 
     <script src="components/set-image.js"></script>
   </head>
@@ -81,7 +82,7 @@
         
         <!-- Image link template to be reused. -->
         <script id="link" type="text/html">
-          <a-entity class="link"
+          <a-entity look-at="[camera]" class="link"
             geometry="primitive: plane; height: 2; width: 1.3"
             material="side:double;shader: flat; src: ${thumb}"
             event-set__1="_event: mousedown; scale: 1 1 1"
@@ -123,45 +124,27 @@
                  to="1"></a-animation>
             </a-entity>
                
-    <a-entity id="target"  sound="on: click; src: #click-sound"
-                  rotation="0 0 180" geometry="primitive: plane;height: 0.5; width: 2;" material="transparent:true;side:double;src: /images/ingresar.png" position="0 0 3"
-
-                  event-set__1="_event: mousedown; scale: 1 1 1"
-                  event-set__2="_event: mouseup; scale: 1.2 1.2 1"
-                  event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
-                  event-set__4="_event: mouseleave; scale: 1 1 1"
-                  ></a-entity>
 
 
 
-
-      <!-- Image links. -->
-      <a-entity id="links" layout="type: line; margin: 2" position="-2.5 0 2.80" rotation="0 90 0">
-        <a-entity template="src: #link" data-src="#margot" data-thumb="#margot-thumb"></a-entity>
-        <a-entity template="src: #link" data-src="#borges" data-thumb="#borges-thumb"></a-entity>
-        <a-entity template="src: #link" data-src="#santelmo" data-thumb="#santelmo-thumb"></a-entity>
-        <a-entity template="src: #link" data-src="#eter" data-thumb="#eter-thumb"></a-entity>
+      <a-entity layout="type: circle; radius: 4; plane:xz;">
+        <a-entity look-at="[camera]" template="src: #link" data-src="#margot" data-thumb="#margot-thumb"></a-entity>
+        <a-entity look-at="[camera]" template="src: #link" data-src="#borges" data-thumb="#borges-thumb"></a-entity>
+        <a-entity look-at="[camera]" template="src: #link" data-src="#santelmo" data-thumb="#santelmo-thumb"></a-entity>
+        <a-entity look-at="[camera]" template="src: #link" data-src="#eter" data-thumb="#eter-thumb"></a-entity>
+        <a-entity look-at="[camera]" template="src: #link" data-src="#khipu" data-thumb="#khipu-thumb"></a-entity>
+        <a-entity look-at="[camera]" template="src: #link" data-src="#sonrisa" data-thumb="#sonrisa-thumb"></a-entity>
+        <a-entity look-at="[camera]" template="src: #link" data-src="#terror" data-thumb="#terror-thumb"></a-entity>
          <a-animation attribute="position"
                dur="4200"
                begin="0"
                fill="forwards"
                from="-2.27 0 -200"
-               to="-2.5 0 2.80"
+               to="0 0 0"
                ></a-animation>
       </a-entity>
+     
 
-      <!-- Image links. -->
-      <a-entity id="links" layout="type: line; margin: 2" position="2 0 -3" rotation="0 -90 0">
-        <a-entity template="src: #link" data-src="#khipu" data-thumb="#khipu-thumb"></a-entity>
-        <a-entity template="src: #link" data-src="#sonrisa" data-thumb="#sonrisa-thumb"></a-entity>
-        <a-entity template="src: #link" data-src="#terror" data-thumb="#terror-thumb"></a-entity>
-         <a-animation attribute="position"
-               dur="4200"
-               fill="forwards"
-               from="2 0 -200"
-               to="2 0 -3" 
-               ></a-animation>
-      </a-entity>
 
       <!-- Camera + cursor. -->
       <a-entity camera look-controls>

@@ -43,14 +43,14 @@ AFRAME.registerComponent('set-image', {
     if (targetEl.dataset.setImageFadeSetup) { return; }
     targetEl.dataset.setImageFadeSetup = true;
 
-    // Create animation.
-    targetEl.setAttribute('animation__fade', {
-      property: 'material.color',
-      startEvents: 'set-image-fade',
-      dir: 'alternate',
-      dur: data.dur,
-      from: '#FFF',
-      to: '#000'
-    });
+    // // Create animation.
+    // targetEl.setAttribute('animation__fade', {
+    //   property: 'material.color',
+    //   startEvents: 'set-image-fade',
+    //   dir: 'alternate',
+    //   dur: data.dur,
+    //   from: '#FFF',
+    //   to: '#000'
+    // });
   }
 });
