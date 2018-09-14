@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>#historiascondatos - ¿Qué hay detrás de los datos abiertos? </title>
+    <!-- Facebook iframe embed  -->
+    <meta name="twitter:card" content="player">
+    <meta name="twitter:site" content="@divevr">
+    <meta name="twitter:title" content="Miradas 360 - 
+    Historias Inmersivas Colaborativas y Abiertas">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="https://cdn-images-1.medium.com/max/1600/1*YX3nD8Xj371B0mr3z4jeJA.jpeg">
+    <meta name="twitter:player" content="http://www.miradas360.com.ar">
+    <meta name="twitter:player:width" content="600">
+    <meta name="twitter:player:height" content="370">
+    
+    <meta property="og:title" content="Miradas 360 - 
+    Historias Inmersivas Colaborativas y Abiertas">
+    <meta property="og:url"  content="http://www.miradas360.com.ar">
+    <meta property="og:description" content="" />
+    <meta property="og:type" content="video" />
+    <meta property="og:image" content="https://cdn-images-1.medium.com/max/1600/1*YX3nD8Xj371B0mr3z4jeJA.jpeg" />
+    <meta property="og:image:seucre_url" content="https://cdn-images-1.medium.com/max/1600/1*YX3nD8Xj371B0mr3z4jeJA.jpeg" />
+     
+    <meta property="og:type" content="video" />
+    <meta property="og:video:url" content="http://miradas360.com.ar/">
+    <meta property="og:video:secure_url" content="http://miradas360.com.ar/">
+    <meta property="og:video:type" content="text/html">
+    <meta property="og:video:width" content="560">
+    <meta property="og:video:height" content="395">
+    <link rel="shortcut icon" type="image/png" href="favicon.png"/>
+     <meta property="og:video:url" content="index.html">
+    <meta property="og:video:secure_url" content="http://miradas360.com.ar">
+    <meta property="og:video:type" content="application/x-shockwave-flash">
+    <meta property="og:video:width" content="560">
+    <meta property="og:video:height" content="395">
+
+    <meta name="description" content="Explorá lugares que merecen ser vistos, explorados y atravesados por una historia.">
+    <meta name="description" content="360&deg; Image Gallery - A-Frame">
+    <script src="aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script> 
+    <script src="https://npmcdn.com/aframe-event-set-component@4.1.2"></script>
+    <script src="https://unpkg.com/aframe-layout-component@4.2/dist/aframe-layout-component.min.js"></script> 
+    <script src="https://unpkg.com/aframe-template-component@^3.1.1/dist/aframe-template-component.min.js"></script> 
+    <script src="https://unpkg.com/aframe-look-at-component@0.5.1/dist/aframe-look-at-component.min.js"></script>
+
+    <script src="components/set-image.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        
+        <audio id="click-sound" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
+        
+        
+        <img id="margot" crossorigin="anonymous" src="stories/01/margot/assets/photos/adentro-dia.jpg">
+        <img id="borges" crossorigin="anonymous" src="stories/01/borges/img/bgEscena1.jpg">
+        <img id="eter" crossorigin="anonymous" src="stories/01/eternauta/02-01-devoto-4.jpg">
+        <img id="santelmo" crossorigin="anonymous" src="stories/01/santelmo/img/bgEscena1.jpg">
+
+
+        <img id="adm-thumb" crossorigin="anonymous" src="images/posters/poster-adm.png">
+        <img id="ambiente-thumb" crossorigin="anonymous" src="images/posters/poster-ambiente.png">
+        <img id="cultura-thumb" crossorigin="anonymous" src="images/posters/poster-cultura.png">
+        <img id="economica-thumb" crossorigin="anonymous" src="images/posters/poster-economica.png">
+        <img id="educacion-thumb" crossorigin="anonymous" src="images/posters/poster-educacion.png">
+        <img id="movilidad-thumb" crossorigin="anonymous" src="images/posters/poster-movilidad.png">
+        <img id="obras-thumb" crossorigin="anonymous" src="images/posters/poster-obras.png">
+        <img id="salud-thumb" crossorigin="anonymous" src="images/posters/poster-salud.png">
+        <img id="urbanismo-thumb" crossorigin="anonymous" src="images/posters/poster-urbanismo.png">
+        <img id="seguridad-thumb" crossorigin="anonymous" src="images/posters/poster-seguridad.png">
+
+
+
+        <img id="khipu" crossorigin="anonymous" src="stories/02/khipu/rooftop.jpg">
+        <img id="sonrisa" crossorigin="anonymous" src="stories/02/sonria/img-1.jpg">
+        <img id="terror" crossorigin="anonymous" src="stories/02/terror/Escena-03-negativo.jpg">
+        
+
+
+        
+        <!-- Image link template to be reused. -->
+        <script id="link" type="text/html">
+          <!-- <a-entity layout="type: line;columns:1; margin: 0.25;"> -->
+          <a-entity look-at="[camera]" class="link"
+            geometry="primitive: plane; height: 2; width: 1.3"
+            material="side:double;shader: flat; src: ${thumb}"
+            event-set__1="_event: mousedown; scale: 1 1 1"
+            event-set__2="_event: mouseup; scale: 1.2 1.2 1"
+            event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
+            event-set__4="_event: mouseleave; scale: 1 1 1"
+            set-image="on: click; target: #image-360; src: ${src}"
+            sound="on: click; src: #click-sound"></a-entity>
+            <a-entity look-at="[camera]" position="0.012676036232893928 1.3822007219788657 0.00863929409054304">
+              <a-text value="36 datasets" align="center" text=""></a-text>
+            </a-entity>
+            <a-entity look-at="[camera]" position="0.012676036232893928 -1.3822007219788657 0.00863929409054304">
+              <a-text value="11% del Total" align="center" text=""></a-text>
+            </a-entity>
+          <!-- </a-entity> -->
+        </script>
+      </a-assets>
+
+
+      <!-- 360-degree image. -->
+      <a-sky id="image-360" radius="10" src="#margot" color="white"></a-sky>
+      
+      <a-entity position="0 2 0" layout="type: circle; radius: 4; plane:xz;">
+        <a-entity look-at="[camera]" template="src: #link" data-src="#margot" data-thumb="#ambiente-thumb"></a-entity>
+         <a-entity look-at="[camera]" template="src: #link" data-src="#margot" data-thumb="#ambiente-thumb"></a-entity>
+        <a-entity look-at="[camera]" template="src: #link" data-src="#margot" data-thumb="#ambiente-thumb"></a-entity>
+        <a-entity look-at="[camera]" template="src: #link" data-src="#margot" data-thumb="#ambiente-thumb"></a-entity>
+      </a-entity>
+     
+      <a-entity layout="type: circle; radius: 8; plane:xz;"  position="0 -0.5 0">
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+      </a-entity>
+     
+<a-entity layout="type: circle; radius: 8; plane:xz;" position="0 0.25 0">
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+      </a-entity>
+      <!-- Camera + cursor. -->
+      <a-entity camera look-controls>
+        <a-cursor id="cursor"
+          animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
+          animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
+          event-set__1="_event: mouseenter; color: springgreen"
+          event-set__2="_event: mouseleave; color: black"
+          fuse="true"></a-cursor>
+      </a-entity>
+    </a-scene>
+    <script src="components/main.js"></script>
+  </body>
+</html>
