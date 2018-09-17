@@ -11,7 +11,7 @@ AFRAME.registerComponent('set-image', {
     on: {type: 'string'},
     target: {type: 'selector'},
     src: {type: 'string'},
-    dur: {type: 'number', default: 300}
+    dur: {type: 'number', default: 500}
   },
 
   init: function () {
@@ -43,14 +43,14 @@ AFRAME.registerComponent('set-image', {
     if (targetEl.dataset.setImageFadeSetup) { return; }
     targetEl.dataset.setImageFadeSetup = true;
 
-    // // Create animation.
-    // targetEl.setAttribute('animation__fade', {
-    //   property: 'material.color',
-    //   startEvents: 'set-image-fade',
-    //   dir: 'alternate',
-    //   dur: data.dur,
-    //   from: '#FFF',
-    //   to: '#000'
-    // });
+    // Create animation.
+    targetEl.setAttribute('animation__fade', {
+      property: 'material.color',
+      startEvents: 'set-image-fade',
+      dir: 'alternate',
+      dur: data.dur,
+      from: '#000',
+      to: '#FFF'
+    });
   }
 });

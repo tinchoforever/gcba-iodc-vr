@@ -8,47 +8,16 @@
   <head>
     <meta charset="utf-8">
     <title>#historiascondatos - ¿Qué hay detrás de los datos abiertos? </title>
-    <!-- Facebook iframe embed  -->
-    <meta name="twitter:card" content="player">
-    <meta name="twitter:site" content="@divevr">
-    <meta name="twitter:title" content="Miradas 360 - 
-    Historias Inmersivas Colaborativas y Abiertas">
-    <meta name="twitter:description" content="">
-    <meta name="twitter:image" content="https://cdn-images-1.medium.com/max/1600/1*YX3nD8Xj371B0mr3z4jeJA.jpeg">
-    <meta name="twitter:player" content="http://www.miradas360.com.ar">
-    <meta name="twitter:player:width" content="600">
-    <meta name="twitter:player:height" content="370">
+    <meta name="description" content="Una nueva forma de descubrir los datos de la ciudad.">
     
-    <meta property="og:title" content="Miradas 360 - 
-    Historias Inmersivas Colaborativas y Abiertas">
-    <meta property="og:url"  content="http://www.miradas360.com.ar">
-    <meta property="og:description" content="" />
-    <meta property="og:type" content="video" />
-    <meta property="og:image" content="https://cdn-images-1.medium.com/max/1600/1*YX3nD8Xj371B0mr3z4jeJA.jpeg" />
-    <meta property="og:image:seucre_url" content="https://cdn-images-1.medium.com/max/1600/1*YX3nD8Xj371B0mr3z4jeJA.jpeg" />
-     
-    <meta property="og:type" content="video" />
-    <meta property="og:video:url" content="http://miradas360.com.ar/">
-    <meta property="og:video:secure_url" content="http://miradas360.com.ar/">
-    <meta property="og:video:type" content="text/html">
-    <meta property="og:video:width" content="560">
-    <meta property="og:video:height" content="395">
-    <link rel="shortcut icon" type="image/png" href="favicon.png"/>
-     <meta property="og:video:url" content="index.html">
-    <meta property="og:video:secure_url" content="http://miradas360.com.ar">
-    <meta property="og:video:type" content="application/x-shockwave-flash">
-    <meta property="og:video:width" content="560">
-    <meta property="og:video:height" content="395">
-
-    <meta name="description" content="Explorá lugares que merecen ser vistos, explorados y atravesados por una historia.">
-    <meta name="description" content="360&deg; Image Gallery - A-Frame">
-    <script src="aframe.min.js"></script>
-    <script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script> 
-    <script src="https://npmcdn.com/aframe-event-set-component@4.1.2"></script>
-    <script src="https://unpkg.com/aframe-layout-component@4.2/dist/aframe-layout-component.min.js"></script> 
-    <script src="https://unpkg.com/aframe-template-component@^3.1.1/dist/aframe-template-component.min.js"></script> 
-    <script src="https://unpkg.com/aframe-look-at-component@0.5.1/dist/aframe-look-at-component.min.js"></script>
-
+    <script src="libs/aframe.min.js"></script>
+    <script src="libs/aframe-animation-component.min.js"></script> 
+    <script src="libs/aframe-event-set-component.js"></script>
+    <script src="libs/aframe-layout-component.min.js"></script> 
+    <script src="libs/aframe-template-component.min.js"></script> 
+    <script src="libs/aframe-look-at-component.min.js"></script>
+    <script src="libs/d3/d3.min.js"></script>
+    <script src="libs/nunjucks.min.js"> </script>
     <script src="components/set-image.js"></script>
   </head>
   <body>
@@ -64,13 +33,16 @@
         <img id="santelmo" crossorigin="anonymous" src="stories/01/santelmo/img/bgEscena1.jpg">
 
 
-        <img id="adm-thumb" crossorigin="anonymous" src="images/posters/poster-adm.png">
+        <img id="lobby" crossorigin="anonymous" src="images/lobby/00.png">
+
+
+        <img id="administracion-thumb" crossorigin="anonymous" src="images/posters/poster-administracion.png">
         <img id="ambiente-thumb" crossorigin="anonymous" src="images/posters/poster-ambiente.png">
         <img id="cultura-thumb" crossorigin="anonymous" src="images/posters/poster-cultura.png">
-        <img id="economica-thumb" crossorigin="anonymous" src="images/posters/poster-economica.png">
+        <img id="actividad_economica-thumb" crossorigin="anonymous" src="images/posters/poster-economica.png">
         <img id="educacion-thumb" crossorigin="anonymous" src="images/posters/poster-educacion.png">
         <img id="movilidad-thumb" crossorigin="anonymous" src="images/posters/poster-movilidad.png">
-        <img id="obras-thumb" crossorigin="anonymous" src="images/posters/poster-obras.png">
+        <img id="obra-thumb" crossorigin="anonymous" src="images/posters/poster-obra.png">
         <img id="salud-thumb" crossorigin="anonymous" src="images/posters/poster-salud.png">
         <img id="urbanismo-thumb" crossorigin="anonymous" src="images/posters/poster-urbanismo.png">
         <img id="seguridad-thumb" crossorigin="anonymous" src="images/posters/poster-seguridad.png">
@@ -82,6 +54,25 @@
         <img id="terror" crossorigin="anonymous" src="stories/02/terror/Escena-03-negativo.jpg">
         
 
+
+     <!-- Image link template to be reused. -->
+      <script id="circle-menu" type="text/x-nunjucks-template">
+        <a-entity layout="type: circle; radius: 6; plane:xz;">
+            
+            {% for x in categories %}
+               <a-entity look-at="[camera]" template="src: #link" data-src="#margot" data-thumb="#{{x.key}}-thumb" data-percentage="{{x.percentage}}" data-count="{{x.values.length}}" data-rows="{{x.rows}}"></a-entity>
+            {% endfor %}
+             <a-animation attribute="position"
+               dur="4200"
+               begin="0"
+               fill="forwards"
+               from="0 200 0"
+               to="0 0 0"
+               ></a-animation>
+      </a-entity>
+     
+        </script>
+      
 
         
         <!-- Image link template to be reused. -->
@@ -97,10 +88,13 @@
             set-image="on: click; target: #image-360; src: ${src}"
             sound="on: click; src: #click-sound"></a-entity>
             <a-entity look-at="[camera]" position="0.012676036232893928 1.3822007219788657 0.00863929409054304">
-              <a-text value="36 datasets" align="center" text=""></a-text>
+              <a-text value="${count} datasets" align="center" text=""></a-text>
             </a-entity>
-            <a-entity look-at="[camera]" position="0.012676036232893928 -1.3822007219788657 0.00863929409054304">
-              <a-text value="11% del Total" align="center" text=""></a-text>
+            <a-entity look-at="[camera]" position="0.012676036232893928 -1.734007219788657 0.00863929409054304">
+              <a-text value="${percentage}% del Total" align="center" text=""></a-text>
+            </a-entity>
+            <a-entity look-at="[camera]" position="0.012676036232893928 -1.405007219788657 0.00863929409054304">
+              <a-text value="${rows} filas" align="center" text=""></a-text>
             </a-entity>
           <!-- </a-entity> -->
         </script>
@@ -108,7 +102,7 @@
 
 
       <!-- 360-degree image. -->
-      <a-sky id="image-360" radius="10" src="#city" color="white"></a-sky>
+      <a-sky id="image-360" radius="16" src="#lobby" color="white"></a-sky>
       <!-- Miradas Logo -->
    
   <!-- Miradas Logo -->
@@ -130,6 +124,9 @@
                 duration="5000"
                 from="1"
                  to="0"></a-animation>
+                   <a-animation attribute="visible"   begin="20000"
+                duration="5000"  to="false"></a-animation>
+
             </a-entity>
               <!-- Miradas Logo -->
       <a-entity position="0 0 -1.5"
@@ -144,40 +141,17 @@
                 duration="5000"
                 from="1"
                  to="0"></a-animation>
+                <a-animation attribute="visible"   begin="20000"
+                duration="5000"  to="false"></a-animation>
+
             </a-entity>
                
 
 
 
-      <a-entity layout="type: circle; radius: 4; plane:xz;">
-        <a-entity look-at="[camera]" template="src: #link" data-src="#margot" data-thumb="#ambiente-thumb"></a-entity>
-        <a-entity look-at="[camera]" template="src: #link" data-src="#borges" data-thumb="#adm-thumb"></a-entity>
-        <a-entity look-at="[camera]" template="src: #link" data-src="#santelmo" data-thumb="#cultura-thumb"></a-entity>
-        <a-entity look-at="[camera]" template="src: #link" data-src="#sonrisa" data-thumb="#economica-thumb"></a-entity>
-        <a-entity look-at="[camera]" template="src: #link" data-src="#borges" data-thumb="#educacion-thumb"></a-entity>
-        <a-entity look-at="[camera]" template="src: #link" data-src="#margot" data-thumb="#movilidad-thumb"></a-entity>
-        <a-entity look-at="[camera]" template="src: #link" data-src="#sonrisa" data-thumb="#obras-thumb"></a-entity>
-        <a-entity look-at="[camera]" template="src: #link" data-src="#santelmo" data-thumb="#salud-thumb"></a-entity>
-        <a-entity look-at="[camera]" template="src: #link" data-src="#borges" data-thumb="#seguridad-thumb"></a-entity>
-        <a-entity look-at="[camera]" template="src: #link" data-src="#margot" data-thumb="#urbanismo-thumb"></a-entity>
+      <a-entity id="lobby-circle">
 
-
-
-
-
-
-
-
-
-         <a-animation attribute="position"
-               dur="4200"
-               begin="0"
-               fill="forwards"
-               from="-2.27 0 -200"
-               to="0 0 0"
-               ></a-animation>
-      </a-entity>
-     
+      </a-entity> 
 
 
       <!-- Camera + cursor. -->
