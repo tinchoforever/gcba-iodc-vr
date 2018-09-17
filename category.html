@@ -9,13 +9,15 @@
     <meta charset="utf-8">
        <title>#historiascondatos - ¿Qué hay detrás de los datos abiertos? </title>
     <meta name="description" content="Una nueva forma de descubrir los datos de la ciudad.">
-    <script src="aframe.min.js"></script>
-    <script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script> 
-    <script src="https://npmcdn.com/aframe-event-set-component@4.1.2"></script>
-    <script src="https://unpkg.com/aframe-layout-component@4.2/dist/aframe-layout-component.min.js"></script> 
-    <script src="https://unpkg.com/aframe-template-component@^3.1.1/dist/aframe-template-component.min.js"></script> 
-    <script src="https://unpkg.com/aframe-look-at-component@0.5.1/dist/aframe-look-at-component.min.js"></script>
-
+      
+    <script src="libs/aframe.min.js"></script>
+    <script src="libs/aframe-animation-component.min.js"></script> 
+    <script src="libs/aframe-event-set-component.js"></script>
+    <script src="libs/aframe-layout-component.min.js"></script> 
+    <script src="libs/aframe-template-component.min.js"></script> 
+    <script src="libs/aframe-look-at-component.min.js"></script>
+    <script src="libs/d3/d3.min.js"></script>
+    <script src="libs/nunjucks.min.js"> </script>
     <script src="components/set-image.js"></script>
   </head>
   <body>
@@ -84,81 +86,17 @@
         <a-entity look-at="[camera]" template="src: #link" data-src="#margot" data-thumb="#ambiente-thumb"></a-entity>
       </a-entity>
      
-      <a-entity layout="type: circle; radius: 8; plane:xz;"  position="0 -0.5 0">
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-      </a-entity>
      
-<a-entity layout="type: circle; radius: 8; plane:xz;" position="0 0.25 0">
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-        <a-entity geometry="primitive: box" material></a-entity>
-      </a-entity>
+       <a-entity layout="type: box; columns:1; margin: 0.75; plane:xy;" position="-4 0 0">
+            <a-entity look-at="[camera]" geometry="primitive: box" material></a-entity>
+             <a-entity look-at="[camera]">
+                <a-text value="{{x.titulo}} titulo datasets datasetsdatasetsdatasets data etsdatasetsdatasets datasets datasets" datasets"   align="center" text=""></a-text>
+            </a-entity>
+         
+        </a-entity>
+        
+    </a-entity>
+      
       <!-- Camera + cursor. -->
       <a-entity camera look-controls>
         <a-cursor id="cursor"

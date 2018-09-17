@@ -53,14 +53,54 @@
         <img id="sonrisa" crossorigin="anonymous" src="stories/02/sonria/img-1.jpg">
         <img id="terror" crossorigin="anonymous" src="stories/02/terror/Escena-03-negativo.jpg">
         
+        <script id="rectangle-menu" type="text/x-nunjucks-template">
+           <a-entity layout="type: circle; radius: 6; plane:xz;"  position="0 -1.0 0">
+          
+            {% for x in currentCategory.firstGroup %}
+            <a-entity layout="type: box; columns:1; margin: 0.75; plane:xy;">
+                <a-entity look-at="[camera]" geometry="primitive: box" material  position="0 1 0"></a-entity>
+                <a-entity look-at="[camera]"  scale="0.5 0.5 0.5" position="0 2.5 0">
+                  <a-text value="{{x.titulo}}" wrap-count="15" align="center"></a-text>
+              </a-entity>
+            </a-entity>
+            {% endfor %}
+            <a-animation attribute="position"
+               dur="4200"
+               begin="0"
+               fill="forwards"
+               from="0 200 0"
+               to="0 0 0"
+               ></a-animation>
+            </a-entity>
 
+          <a-entity layout="type: circle; radius: 6; plane:xz;"  position="0 1 0">
+            {% for x in currentCategory.secondGroup %}
+             <a-entity layout="type: box; columns:1; margin: 0.75; plane:xy;">
+              <a-entity look-at="[camera]"  scale="0.5 0.5 0.5">
+                  <a-text value="{{x.titulo}}" wrap-count="15" align="center"></a-text>
+              </a-entity>
+                <a-entity look-at="[camera]" geometry="primitive: box" material></a-entity>
+                
+            </a-entity>
+            {% endfor %}
+            <a-animation attribute="position"
+               dur="4200"
+               begin="0"
+               fill="forwards"
+               from="0 200 0"
+               to="0 0 0"
+               ></a-animation>
+            </a-entity>
+         
+     
+        </script>
 
      <!-- Image link template to be reused. -->
       <script id="circle-menu" type="text/x-nunjucks-template">
         <a-entity layout="type: circle; radius: 6; plane:xz;">
             
             {% for x in categories %}
-               <a-entity look-at="[camera]" template="src: #link" data-src="#margot" data-thumb="#{{x.key}}-thumb" data-percentage="{{x.percentage}}" data-count="{{x.values.length}}" data-rows="{{x.rows}}"></a-entity>
+               <a-entity look-at="[camera]" template="src: #link" data-src="#margot" data-link="{{x.key}}" data-thumb="#{{x.key}}-thumb" data-percentage="{{x.percentage}}" data-count="{{x.values.length}}" data-rows="{{x.rows}}"></a-entity>
             {% endfor %}
              <a-animation attribute="position"
                dur="4200"
@@ -85,7 +125,7 @@
             event-set__2="_event: mouseup; scale: 1.2 1.2 1"
             event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
             event-set__4="_event: mouseleave; scale: 1 1 1"
-            set-image="on: click; target: #image-360; src: ${src}"
+            set-image="on: click; link:${link};target: #image-360; src: ${src}"
             sound="on: click; src: #click-sound"></a-entity>
             <a-entity look-at="[camera]" position="0.012676036232893928 1.3822007219788657 0.00863929409054304">
               <a-text value="${count} datasets" align="center" text=""></a-text>
@@ -149,9 +189,9 @@
 
 
 
-      <a-entity id="lobby-circle">
-
-      </a-entity> 
+      <a-entity id="lobby-circle"></a-entity> 
+      <a-entity id="category-circle"></a-entity> 
+      <a-entity id="detail-circle"></a-entity> 
 
 
       <!-- Camera + cursor. -->

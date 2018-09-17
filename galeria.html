@@ -20,10 +20,12 @@
        
 
     </a-sky>
-    <a-entity layout="type: line; margin: 2" position="0 5 -5">
-      <a-box position="0 0 0"></a-box>
-      <a-box position="2 0 0"></a-box>
-      <a-box position="4 0 0"></a-box>
+     <a-entity layout="type: circle; radius: 10; plane:xz;">
+       <a-entity geometry="primitive: box" material></a-entity>
+        <a-entity geometry="primitive: box" material></a-entity>
+         <a-entity geometry="primitive: box" material></a-entity>
+         
+
     </a-entity>
     <a-entity layout="type: circle; radius: 10; plane:xz;">
       <a-entity geometry="primitive: box" material></a-entity>

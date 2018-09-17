@@ -11,6 +11,7 @@ AFRAME.registerComponent('set-image', {
     on: {type: 'string'},
     target: {type: 'selector'},
     src: {type: 'string'},
+    link: {type: 'string'},
     dur: {type: 'number', default: 500}
   },
 
@@ -24,11 +25,21 @@ AFRAME.registerComponent('set-image', {
       // Fade out image.
       data.target.emit('set-image-fade');
       // Wait for fade to complete.
-      window.currentMove = data.src.replace('#','') ;
+      
+      window.currentMove = data.link;
       setTimeout(function () {
         // Set image.
         data.target.setAttribute('material', 'src', data.src);
       }, data.dur);
+
+      window.game.renderCategory(window.currentMove);
+
+
+
+
+
+
+
     });
   },
 
