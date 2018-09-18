@@ -27,11 +27,14 @@ window.game = {
 		var total = 0; 
 		csv.map(function(d){
 			d.titulo = toTitleCase(d.titulo);
-			if (d.tamanio !=''){
-				d.tamanio = parseInt(d.tamanio);
-				total += d.tamanio ;
+			d.tamanio = parseInt(d.tamanio);
+			if (isNaN(d.tamanio)){
+				d.tamanio = 0;
 			}
+
+			total += d.tamanio;
 		});
+		
 		window.metadata.datasets = csv;
 
 			categories = window.metadata.categories = d3.nest()
@@ -48,7 +51,7 @@ window.game = {
 		    	d.values.map(function(v){
 		    		d.rows += parseInt(v.tamanio);
 		    	});
-		    	d.percentage = Math.round(d.rows * 100 /total);
+		    	d.percentage = Math.round(d.rows * 100 /total,2);
 		    	d.rowsLabel = Math.round(d.rows/100000) + " millones"
 		    });
 	   		 env.addGlobal('categories',categories);
@@ -90,6 +93,11 @@ window.game = {
 	  	
 
 	},
+	reRenderLobby:function(){
+		document.getElementById('category-circle').innerHTML = "";
+		document.getElementById('lobby-inner').setAttribute('visible',true);
+
+	},	
 	renderCategory: function(categoryKey){
 		
 		var currentCategory = categories.filter(function(c){

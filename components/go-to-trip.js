@@ -17,7 +17,7 @@ AFRAME.registerComponent('go-to-trip', {
     var el = this.el;
 
     el.addEventListener(data.on, function () {
-      window.game.renderDetail(data.item,el);
+      window.game.goBackHome();
 
     });
   },
