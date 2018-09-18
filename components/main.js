@@ -25,6 +25,7 @@ window.game = {
 		d3.csv('data/meta-data-gcba.csv', function(csv){
 
 		var total = 0; 
+
 		csv.map(function(d){
 			d.titulo = toTitleCase(d.titulo);
 			d.tamanio = parseInt(d.tamanio);
@@ -34,7 +35,16 @@ window.game = {
 
 			total += d.tamanio;
 		});
-		
+		var max = d3.max(csv,function(d){ return d.tamanio});
+		var min = d3.min(csv,function(d){ return d.tamanio});
+		var chartScale = d3.scale.linear().domain([min,max]).range([1,100]);
+
+		csv.map(function(d){
+			d.barLength = chartScale(d.tamanio);
+			d.barPosition = d.barLength/2 + 0.66;
+		})
+
+
 		window.metadata.datasets = csv;
 
 			categories = window.metadata.categories = d3.nest()
