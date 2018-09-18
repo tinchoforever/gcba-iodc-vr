@@ -79,16 +79,23 @@
           </a-entity>
         </script>
         <script id="rectangle-menu" type="text/x-nunjucks-template">
-           <a-entity layout="type: circle; radius: 6; plane:xz;"  position="0 -1.0 0">
+           <a-entity layout="type: circle; radius: 6; plane:xz;"  position="0 0 0">
             {% for x in currentCategory.firstGroup %}
             <a-entity layout="type: box; columns:1; margin: 0.85; plane:xy;">
+                <a-entity position>
+                    <a-entity  position="0 7 0" geometry="primitive: box;width:1;height:10" material="shader: flat; color: blue" >
+                      
+                    </a-entity>
+                </a-entity>
+                <a-entity look-at="[camera]"  scale="0.5 0.5 0.5" position="0 2.5 0">
+                   <a-text value="{{x.titulo}}"  width="3" wrap-count="20" align="center"></a-text>
+              </a-entity>
+               
                 <a-entity look-at="[camera]" geometry="primitive: box" material  position="0 1 0"
                 sound="on: click; src: #click-sound"
                 show-detail="on: click;item:{{x.id}}"
                 ></a-entity>
-                <a-entity look-at="[camera]"  scale="0.5 0.5 0.5" position="0 2.5 0">
-                  <a-text value="{{x.titulo}}"  width="3" wrap-count="20" align="center"></a-text>
-              </a-entity>
+                
             </a-entity>
             {% endfor %}
              <a-animation attribute="rotation"
@@ -106,12 +113,10 @@
                ></a-animation>
             </a-entity>
 
-          <a-entity layout="type: circle; radius: 6; plane:xz;"  position="0 1 0">
+          <a-entity layout="type: circle; radius: 6; plane:xz;"  position="0 -1 0">
             {% for x in currentCategory.secondGroup %}
              <a-entity layout="type: box; columns:1; margin: 0.8; plane:xy;">
-              <a-entity look-at="[camera]"  scale="0.5 0.5 0.5">
-                  <a-text value="{{x.titulo}}" width="3" wrap-count="20" align="center"></a-text>
-              </a-entity>
+              
                 <a-entity look-at="[camera]" geometry="primitive: box" material 
                 sound="on: click; src: #click-sound"
                 show-detail="on: click;item:{{x.id}}"
@@ -120,6 +125,13 @@
                 event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
                 event-set__4="_event: mouseleave; scale: 1 1 1"></a-entity>
                 
+              <a-entity look-at="[camera]"  scale="0.5 0.5 0.5">
+                  <a-text value="{{x.titulo}}" width="3" wrap-count="20" align="center"></a-text>
+              </a-entity>
+                 <a-entity position>
+                    <a-entity position="0 0 0" geometry="primitive: box;width:1;height:{{x.tamanio/100}}" material="shader: flat; color: blue" >
+                    </a-entity>
+                </a-entity>
             </a-entity>
             {% endfor %}
             <a-animation attribute="position"
@@ -188,7 +200,7 @@
 
 
       <!-- 360-degree image. -->
-      <a-sky id="image-360" radius="16" src="#lobby" color="white"></a-sky>
+      <a-sky id="image-360" radius="100" src="#lobby" color="white"></a-sky>
       <!-- Miradas Logo -->
    
   <!-- Miradas Logo -->
