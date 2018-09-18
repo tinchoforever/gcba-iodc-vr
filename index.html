@@ -70,7 +70,9 @@
                 event-set__1="_event: mousedown; scale: 1 1 1"
                 event-set__2="_event: mouseup; scale: 1.2 1.2 1"
                 event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
-                event-set__4="_event: mouseleave; scale: 1 1 1" geometry="primitive: plane; width: 3; height: 0.5;" material="shader: flat; color: yellow" position="0 0 0" text="value: Explora una muestra; align:center">
+                event-set__4="_event: mouseleave; scale: 1 1 1" geometry="primitive: plane; width: 3; height: 0.5;" material="shader: flat; color: yellow" 
+                sound="on: click; src: #click-sound"
+                position="0 0 0" text="value: Explora una muestra; align:center">
                 
                    
                   </a-entity>
@@ -81,6 +83,7 @@
             {% for x in currentCategory.firstGroup %}
             <a-entity layout="type: box; columns:1; margin: 0.85; plane:xy;">
                 <a-entity look-at="[camera]" geometry="primitive: box" material  position="0 1 0"
+                sound="on: click; src: #click-sound"
                 show-detail="on: click;item:{{x.id}}"
                 ></a-entity>
                 <a-entity look-at="[camera]"  scale="0.5 0.5 0.5" position="0 2.5 0">
@@ -109,7 +112,9 @@
               <a-entity look-at="[camera]"  scale="0.5 0.5 0.5">
                   <a-text value="{{x.titulo}}" width="3" wrap-count="20" align="center"></a-text>
               </a-entity>
-                <a-entity look-at="[camera]" geometry="primitive: box" material show-detail="on: click;item:{{x.id}}"
+                <a-entity look-at="[camera]" geometry="primitive: box" material 
+                sound="on: click; src: #click-sound"
+                show-detail="on: click;item:{{x.id}}"
                 event-set__1="_event: mousedown; scale: 1 1 1"
                 event-set__2="_event: mouseup; scale: 1.2 1.2 1"
                 event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
