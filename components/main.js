@@ -23,6 +23,11 @@ window.game = {
 	},
 	loadData:function(cb){
 		d3.csv('data/meta-data-gcba.csv', function(csv){
+
+
+		csv.map(function(d){
+			d.titulo = toTitleCase(d.titulo);
+		});
 		window.metadata.datasets = csv;
 
 			categories = window.metadata.categories = d3.nest()
@@ -34,6 +39,7 @@ window.game = {
 		    categories.map(function(d){
 		    	d.percentage = Math.round(d.values.length * 100 /csv.length);
 		    	d.rows = 0;
+		    	d.title = toTitleCase(d.key);
 		    	d.values.map(function(v){
 		    		d.rows += parseInt(v.tamanio);
 		    	})
@@ -110,3 +116,11 @@ window.game.init();
 
 //Get Detail.
 
+function toTitleCase(str) {
+    return str.replace(
+        /\w\S*/g,
+        function(txt) {
+            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+        }
+    );
+}

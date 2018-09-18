@@ -87,12 +87,21 @@
       </a-entity>
      
      
-       <a-entity layout="type: box; columns:1; margin: 0.75; plane:xy;" position="-4 0 0">
-            <a-entity look-at="[camera]" geometry="primitive: box" material></a-entity>
-             <a-entity look-at="[camera]">
-                <a-text value="{{x.titulo}} titulo datasets datasetsdatasetsdatasets data etsdatasetsdatasets datasets datasets" datasets"   align="center" text=""></a-text>
-            </a-entity>
-         
+       <a-entity  geometry="primitive: plane; width: 6; height: 4;" material="shader: flat; color: red" 
+          look-at="[camera]"  position="0 0 -4">
+
+            <a-entity layout="type: box;align:start; columns:1;reverse:true; margin: 0.5; plane:xy;" position="0 -1.4 0">
+                <a-text value="viajes molinetes" width="12" align="center"></a-text>
+                <a-text value="179733220 viajes" align="center"></a-text>
+                <a-text value="Mensual" align="center"></a-text>
+                
+                <a-text value="Cantidad de pasajeros por molinete de todas las estaciones de la red de Subte a partir de Junio de 2013" wrap-count="50" align="center"></a-text>
+            
+                <a-text value="Desarrollo Urbano y Transporte" align="center"></a-text>
+                
+                <a-text value="Explora una muestra." align="center"></a-text>
+           
+   
         </a-entity>
         
     </a-entity>
