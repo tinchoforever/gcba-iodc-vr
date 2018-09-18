@@ -19,6 +19,7 @@
     <script src="libs/d3/d3.min.js"></script>
     <script src="libs/nunjucks.min.js"> </script>
     <script src="components/set-image.js"></script>
+    <script src="components/show-detail.js"></script>
   </head>
   <body>
     <a-scene>
@@ -54,32 +55,45 @@
         <img id="terror" crossorigin="anonymous" src="stories/02/terror/Escena-03-negativo.jpg">
         
         <script id="dataset-detail-menu" type="text/x-nunjucks-template">
-          <a-entity geometry="primitive: plane; width: 6; height: 4;" material="shader: flat; color: white" 
-          look-at="[camera]"">
+          <a-entity geometry="primitive: plane; width: 6; height: 4;" material="shader: flat; color: red" 
+          look-at="[camera]" position="0 0 -4">
 
-            <a-entity layout="type: box;align:start; columns:1;reverse:true; margin: 0.5; plane:xy;" position="0 -1.4 0">
-                <a-text value="{{currentdataset.titulo}}" width="12" align="center"></a-text>
-                <a-text value="{{{currentdataset.tamanio}} unidad" align="center"></a-text>
-                <a-text value="{{currentdataset.medida}}" align="center"></a-text>
+            <a-entity layout="type: box;align:start; columns:1;reverse:true; margin: 0.6; plane:xy;" position="0 -1 0">
+                <a-text value="{{currentDetail.titulo}}" width="4" word-wrap="30" align="center"></a-text>
+                <a-text value="{{currentDetail.tamanio}} filas" align="center"></a-text>
+                <a-text value="{{currentDetail.frecuencia}}" align="center"></a-text>
+               
+                   <a-text value="{{currentDetail.descripcion}}" wrap-count="50" align="center"></a-text>
+              
+               
+                 <a-entity go-to-detail="on: click;item:{{x.id}}"
+                event-set__1="_event: mousedown; scale: 1 1 1"
+                event-set__2="_event: mouseup; scale: 1.2 1.2 1"
+                event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
+                event-set__4="_event: mouseleave; scale: 1 1 1" geometry="primitive: plane; width: 3; height: 0.5;" material="shader: flat; color: yellow" position="0 0 0" text="value: Explora una muestra; align:center">
                 
-                <a-text value="{{currentdataset.descripcion}}" wrap-count="50" align="center"></a-text>
-                
-                
-                <a-text value="Explora una muestra." align="center"></a-text>
-           
-   
-        </a-entity>
+                   
+                  </a-entity>
+          </a-entity>
         </script>
         <script id="rectangle-menu" type="text/x-nunjucks-template">
            <a-entity layout="type: circle; radius: 6; plane:xz;"  position="0 -1.0 0">
             {% for x in currentCategory.firstGroup %}
-            <a-entity layout="type: box; columns:1; margin: 0.75; plane:xy;">
-                <a-entity look-at="[camera]" geometry="primitive: box" material  position="0 1 0"></a-entity>
+            <a-entity layout="type: box; columns:1; margin: 0.85; plane:xy;">
+                <a-entity look-at="[camera]" geometry="primitive: box" material  position="0 1 0"
+                show-detail="on: click;item:{{x.id}}"
+                ></a-entity>
                 <a-entity look-at="[camera]"  scale="0.5 0.5 0.5" position="0 2.5 0">
-                  <a-text value="{{x.titulo}}" width="1.75" wrap-count="15" align="center"></a-text>
+                  <a-text value="{{x.titulo}}"  width="3" wrap-count="20" align="center"></a-text>
               </a-entity>
             </a-entity>
             {% endfor %}
+             <a-animation attribute="rotation"
+               dur="60000"
+               easing="linear"
+               fill="forwards"
+               to="0 360 0"
+               repeat="indefinite"></a-animation>
             <a-animation attribute="position"
                dur="4200"
                begin="0"
@@ -91,11 +105,11 @@
 
           <a-entity layout="type: circle; radius: 6; plane:xz;"  position="0 1 0">
             {% for x in currentCategory.secondGroup %}
-             <a-entity layout="type: box; columns:1; margin: 0.75; plane:xy;">
+             <a-entity layout="type: box; columns:1; margin: 0.8; plane:xy;">
               <a-entity look-at="[camera]"  scale="0.5 0.5 0.5">
-                  <a-text value="{{x.titulo}}" width="2" wrap-count="15" align="center"></a-text>
+                  <a-text value="{{x.titulo}}" width="3" wrap-count="20" align="center"></a-text>
               </a-entity>
-                <a-entity look-at="[camera]" geometry="primitive: box" material
+                <a-entity look-at="[camera]" geometry="primitive: box" material show-detail="on: click;item:{{x.id}}"
                 event-set__1="_event: mousedown; scale: 1 1 1"
                 event-set__2="_event: mouseup; scale: 1.2 1.2 1"
                 event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
@@ -110,6 +124,13 @@
                from="0 200 0"
                to="0 0 0"
                ></a-animation>
+               <a-animation attribute="rotation"
+               dur="60000"
+               easing="linear"
+               fill="backwards"
+               from="0 0 0"
+               to="0 360 0"
+               repeat="indefinite"></a-animation>
             </a-entity>
          
      

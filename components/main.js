@@ -53,15 +53,7 @@ window.game = {
 	},
 	renderLobby : function(){
 
-	  	//Setup Lobby
-	  	AFRAME.registerComponent('do-circle-once-loaded', {
-		  init: function () {
-		  	entityEl.setAttribute('template',{
-		  		src:'#circle-menu'
-		  	});
-
-		  }
-		});
+	  	
 		var lobbyEl = document.getElementById('lobby-circle');
 		var entityEl = document.createElement('a-entity');
 		entityEl.setAttribute('do-circle-once-loaded', '');
@@ -69,6 +61,27 @@ window.game = {
 
 		lobbyEl.appendChild(entityEl);
 	    	
+	},
+	renderDetail:function(datasetKey,element){
+
+		var currentDetail = window.metadata.datasets.filter(function(c){
+			return c.id == datasetKey;
+		})[0];
+
+		env.addGlobal('currentDetail',currentDetail);
+	  	nunjucks.currentDetail = currentDetail;
+
+	  	var detailEl = document.getElementById('detail-circle');
+	  	detailEl.innerHTML = '';
+		var detailInnerEl = document.createElement('a-entity');
+		
+		detailInnerEl.setAttribute('id', 'detail-inner');
+		detailInnerEl.setAttribute('do-popup-once-loaded', '');
+		
+		detailEl.appendChild(detailInnerEl);
+		//Setup Lobby
+	  	
+
 	},
 	renderCategory: function(categoryKey){
 		
@@ -98,14 +111,7 @@ window.game = {
 		
 		categoryEl.appendChild(entityInnerEl);
 		//Setup Lobby
-	  	AFRAME.registerComponent('do-rectangle-once-loaded', {
-		  init: function () {
-		  	entityInnerEl.setAttribute('template',{
-		  		src:'#rectangle-menu'
-		  	});
-
-		  }
-		});
+	  	
 	}
 
 
@@ -113,9 +119,32 @@ window.game = {
 
 
 window.game.init();
+AFRAME.registerComponent('do-rectangle-once-loaded', {
+		  init: function () {
+		  	this.el.setAttribute('template',{
+		  		src:'#rectangle-menu'
+		  	});
 
+		  }
+		});
+AFRAME.registerComponent('do-popup-once-loaded', {
+		  init: function () {
+		  	this.el.setAttribute('template',{
+		  		src:'#dataset-detail-menu'
+		  	});
+
+		  }
+		});
 //Get Detail.
+//Setup Lobby
+	  	AFRAME.registerComponent('do-circle-once-loaded', {
+		  init: function () {
+		  	this.el.setAttribute('template',{
+		  		src:'#circle-menu'
+		  	});
 
+		  }
+		});
 function toTitleCase(str) {
     return str.replace(
         /\w\S*/g,
