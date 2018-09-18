@@ -24,9 +24,13 @@ window.game = {
 	loadData:function(cb){
 		d3.csv('data/meta-data-gcba.csv', function(csv){
 
-
+		var total = 0; 
 		csv.map(function(d){
 			d.titulo = toTitleCase(d.titulo);
+			if (d.tamanio !=''){
+				d.tamanio = parseInt(d.tamanio);
+				total += d.tamanio ;
+			}
 		});
 		window.metadata.datasets = csv;
 
@@ -35,14 +39,17 @@ window.game = {
 	              return d.categoria;
 	            })
 	            .entries(csv);
+	        
 
 		    categories.map(function(d){
-		    	d.percentage = Math.round(d.values.length * 100 /csv.length);
+		    	
 		    	d.rows = 0;
 		    	d.title = toTitleCase(d.key);
 		    	d.values.map(function(v){
 		    		d.rows += parseInt(v.tamanio);
-		    	})
+		    	});
+		    	d.percentage = Math.round(d.rows * 100 /total);
+		    	d.rowsLabel = Math.round(d.rows/100000) + " millones"
 		    });
 	   		 env.addGlobal('categories',categories);
 	  		 nunjucks.categories = categories;
