@@ -263,12 +263,12 @@
                 <a-entity>
                   <a-entity layout="type: box;align:start; columns:1;reverse:true; margin: 0.6; plane:xy;">
                     <a-entity material="side:double; shader: flat; color: white" >
-                      <a-entity position="0 0.2 0" geometry="primitive: plane;  width: 1.8; height: 0.22;"  material="side:double; shader: flat; color: white; opacity:0.75" >
+                      {% for z in range(0,x.barLength) %}
+                      <a-entity position="0 {{z*0.25 + 0.2}} 0" geometry="primitive: plane;  width: 1.8; height: 0.22;"  material="side:double; shader: flat; color: white; opacity:0.75" >
                       </a-entity>
-                      <a-entity position="0 0.45 0" geometry="primitive: plane;  width: 1.8; height: 0.22;"  material="side:double; shader: flat; color: white; opacity:0.75" >
-                    </a-entity>
-                     <a-entity position="0 0.7 0" geometry="primitive: plane;  width: 1.8; height: 0.22;"  material="side:double; shader: flat; color: white; opacity:0.75" >
-                    </a-entity>
+                      {% endfor %}
+                    
+                   
                   </a-entity>
                 </a-entity>
               </a-entity>

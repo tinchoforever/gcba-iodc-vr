@@ -40,8 +40,7 @@ window.game = {
 		var chartScale = d3.scaleLinear().domain([min,max]).range([1,100]);
 
 		csv.map(function(d){
-			d.barLength = chartScale(d.tamanio);
-			d.barPosition = d.barLength/2 + 0.66;
+			d.barLength = d.tamanio/1000 + 1;
 		})
 
 
