@@ -27,7 +27,7 @@ window.game = {
 		var total = 0; 
 
 		csv.map(function(d){
-			d.titulo = toTitleCase(d.titulo);
+			d.titulo = d.titulo.toUpperCase();
 			d.tamanio = parseInt(d.tamanio);
 			if (isNaN(d.tamanio)){
 				d.tamanio = 0;
@@ -57,7 +57,7 @@ window.game = {
 		    categories.map(function(d){
 		    	
 		    	d.rows = 0;
-		    	d.title = toTitleCase(d.key);
+		    	d.title = d.key.toUpperCase();
 		    	d.values.map(function(v){
 		    		d.rows += parseInt(v.tamanio);
 		    	});
@@ -105,6 +105,13 @@ window.game = {
 	},
 	reRenderLobby:function(){
 		document.getElementById('category-circle').innerHTML = "";
+		if (document.getElementById('trip-detail')){
+			document.getElementById('trip-detail').innerHTML = "";	
+		}
+		if (document.getElementById('detail-circle')){
+			document.getElementById('detail-circle').innerHTML = "";	
+		}
+		document.getElementById('detail-circle').innerHTML = "";
 		document.getElementById('lobby-inner').setAttribute('visible',true);
 
 	},	
@@ -136,7 +143,8 @@ window.game = {
 		
 		categoryEl.appendChild(entityInnerEl);
 		//Setup Lobby
-	  	
+	  	document.getElementById('category-inner').setAttribute('visible',true);
+	  	document.getElementById('category-circle').setAttribute('visible',true);
 	}
 
 
