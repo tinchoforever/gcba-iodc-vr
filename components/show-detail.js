@@ -87,7 +87,7 @@ AFRAME.registerComponent('show-detail', {
       // Create animation.
       animated =false;
       d3.select('a-entity.item.active detail').html('');
-      
+      d3.select(el).attr('class','item');
 
     });
   },
