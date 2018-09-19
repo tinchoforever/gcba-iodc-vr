@@ -145,6 +145,7 @@ window.game = {
 		//Setup Lobby
 	  	document.getElementById('category-inner').setAttribute('visible',true);
 	  	document.getElementById('category-circle').setAttribute('visible',true);
+	  	document.getElementById('circle-floor').setAttribute('material', 'src', '#' + currentCategory.key +  '-thumb');
 	}
 
 

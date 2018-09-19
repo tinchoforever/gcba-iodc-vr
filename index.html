@@ -25,6 +25,7 @@
     <script src="components/go-to-lobby.js"></script>
     <script src="components/go-to-matrix.js"></script>
     <script src="components/go-to-trip.js"></script>
+    <script src="components/show-matrix.js"></script>
   </head>
   <body>
     <a-scene>
@@ -70,7 +71,7 @@
                    <a-text color="black" value="{{currentDetail.descripcion}}" width="3.5" wrap-count="40" align="center"></a-text>
               
                 <a-entity>
-                   <a-entity position="0 0 0.22" go-to-trip="on: click;item:{{x.id}}"
+                   <a-entity position="0 0 0.22" go-to-matrix="on: click;item:{{x.id}}"
                       event-set__1="_event: mousedown; scale: 1 1 1"
                       event-set__2="_event: mouseup; scale: 1.2 1.2 1"
                       event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
@@ -148,67 +149,96 @@
           </a-entity>
         <a-entity position="0 2.5 0" layout="type: circle; radius: 4; plane:xz;">
           {% for x in range(0,20) %}
-          <a-entity look-at="[camera]" geometry="primitive: plane; height: 0.5; width: 0.5" material="side: double">
+          <a-entity look-at="[camera]" geometry="primitive: plane; height: 0.8; width: 0.8" material="side: double">
            
           </a-entity>
           {% endfor %}
         </a-entity>
         <a-entity position="0 2 0" layout="type: circle; radius: 4; plane:xz;">
           {% for x in range(0,20) %}
-          <a-entity look-at="[camera]" geometry="primitive: plane; height: 0.5; width: 0.5" material="side: double">
-           
-          </a-entity>
-          {% endfor %}
-        </a-entity>
-        <a-entity position="0 -2 0" layout="type: circle; radius: 4; plane:xz;">
-          {% for x in range(0,20) %}
-          <a-entity look-at="[camera]" geometry="primitive: plane; height: 0.5; width: 0.5" material="side: double">
+         <a-entity look-at="[camera]" geometry="primitive: plane; height: 0.8; width: 0.8" material="side: double">
+         
            
           </a-entity>
           {% endfor %}
         </a-entity>
         <a-entity position="0 1 0" layout="type: circle; radius: 4; plane:xz;">
           {% for x in range(0,20) %}
-          <a-entity look-at="[camera]" geometry="primitive: plane; height: 0.5; width: 0.5" material="side: double">
+          <a-entity look-at="[camera]" geometry="primitive: plane; height: 0.8; width: 0.8" material="side: double">
            
           </a-entity>
           {% endfor %}
         </a-entity>
         <a-entity position="0 1.5 0" layout="type: circle; radius: 4; plane:xz;">
           {% for x in range(0,20) %}
-          <a-entity look-at="[camera]" geometry="primitive: plane; height: 0.5; width: 0.5" material="side: double">
+          <a-entity look-at="[camera]" geometry="primitive: plane; height: 0.8; width: 0.8" material="side: double">
            
+
+
+
           </a-entity>
           {% endfor %}
         </a-entity>
         <a-entity position="0 0.5 0" layout="type: circle; radius: 4; plane:xz;">
           {% for x in range(0,20) %}
-          <a-entity look-at="[camera]" geometry="primitive: plane; height: 0.5; width: 0.5" material="side: double">
-           
+          <a-entity look-at="[camera]" geometry="primitive: plane; height: 0.2; width: 0.8" material="side: double">
+              <a-entity>
+                  <a-entity class="item" position="0 0 1" scale="0.2 0.2 0.2" geometry="primitive: plane; width: 4; height: 4;" material="side:double; shader: flat; color: #0288D1;" show-matrix="on: click;item:xxx"  event-set__1="_event: mousedown; position: 0 0 1"
+                      event-set__2="_event: mouseup; position: 0 0 2"
+                      event-set__3="_event: mouseenter; position: 0 0 2"
+                      event-set__4="_event: mouseleave; position: 0 0 1">
+                    <a-entity geometry="primitive: plane; width: 4; height: 4;" material="side: front">
+                      <a-text color="white" align="center" color="black" value="111111"  width="3.5" wrap-count="15" align="center"></a-text>
+                    
+                     </a-entity>
+                     <a-entity class="detail" position="0 0 -0.2" rotation="0 180 0" geometry="primitive: plane; width: 4; height: 4;" material="side: front">
+                     </a-entity>
+                  </a-entity>
+                </a-entity>
+                <a-entity>
+                  <a-entity layout="type: box;align:start; columns:1;reverse:true; margin: 0.6; plane:xy;">
+                    <a-entity material="side:double; shader: flat; color: white" >
+                  </a-entity>
+                </a-entity>
+              </a-entity>
+
+
+
+
+
+
           </a-entity>
           {% endfor %}
         </a-entity>
         <a-entity position="0 0 0" layout="type: circle; radius: 4; plane:xz;">
           {% for x in range(0,20) %}
-          <a-entity look-at="[camera]" geometry="primitive: plane; height: 0.5; width: 0.5" material="side: double">
+          <a-entity look-at="[camera]" geometry="primitive: plane; height: 0.8; width: 0.8" material="side: double">
            
           </a-entity>
           {% endfor %}
         </a-entity>
         <a-entity position="0 -0.5 0" layout="type: circle; radius: 4; plane:xz;">
           {% for x in range(0,20) %}
-          <a-entity look-at="[camera]" geometry="primitive: plane; height: 0.5; width: 0.5" material="side: double">
+          <a-entity look-at="[camera]" geometry="primitive: plane; height: 0.8; width: 0.8" material="side: double">
            
           </a-entity>
           {% endfor %}
           </a-entity>
         <a-entity position="0 -1 0" layout="type: circle; radius: 4; plane:xz;">
           {% for x in range(0,20) %}
-          <a-entity look-at="[camera]" geometry="primitive: plane; height: 0.5; width: 0.5" material="side: double">
+          <a-entity look-at="[camera]" geometry="primitive: plane; height: 0.8; width: 0.8" material="side: double">
            
           </a-entity>
           {% endfor %}
+          </a-entity>
+          <a-entity position="0 -1.5 0" layout="type: circle; radius: 4; plane:xz;">
+          {% for x in range(0,20) %}
+              <a-entity look-at="[camera]" geometry="primitive: plane; height: 0.8; width: 0.8" material="side: double">
+                </a-entity>
+          {% endfor %}
         </a-entity>
+        </a-entity>
+
         </script>
         
 
@@ -345,8 +375,8 @@
       <a-sky id="image-360" radius="100" src="#lobby" color="white"></a-sky>
       <!-- Miradas Logo -->
    
-      <a-entity class="floor" rotation="90 0 0" position="0 -1.195 0" geometry="primitive: circle; radius: 1" 
-        material="side: double; shader: flat; color: black; transparent: true; opacity: 0.5"></a-entity>
+      <a-entity id="circle-floor" class="floor" rotation="90 0 0" position="0 -1.195 0" geometry="primitive: circle; radius: 1" 
+        material="side: double; shader: flat; color: black; transparent: true; opacity: 0.5; src: #salud-thumb;"></a-entity>
 
 
 
@@ -360,7 +390,7 @@
       <a-entity camera look-controls>
         <a-cursor id="cursor"
           animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
-          animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
+          animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 150"
           event-set__1="_event: mouseenter; color: springgreen"
           event-set__2="_event: mouseleave; color: black"
           fuse="true"></a-cursor>

@@ -29,7 +29,6 @@ AFRAME.registerComponent('show-detail', {
         startEvents: 'move-now',
         dir: 'alternate',
         dur: 300,
-        delay:300,
         from: '0 0 0',
         to: '0 180 0'
       });
@@ -38,7 +37,6 @@ AFRAME.registerComponent('show-detail', {
         startEvents: 'move-now',
         dir: 'alternate',
         dur: 300,
-        delay:300,
         from: '0 0 0',
         to: '0 0 4'
       });
@@ -56,7 +54,6 @@ AFRAME.registerComponent('show-detail', {
         startEvents: 'move-out',
         dir: 'alternate',
         dur: 300,
-        delay:300,
         from: '0 0 4',
         to: '0 0 0'
       });
@@ -65,7 +62,6 @@ AFRAME.registerComponent('show-detail', {
         startEvents: 'move-out',
         dir: 'alternate',
         dur: 300,
-        delay:300,
         from: '0 180 0',
         to: '0 0 0'
       });
