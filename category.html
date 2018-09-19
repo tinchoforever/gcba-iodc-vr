@@ -79,32 +79,15 @@
       <!-- 360-degree image. -->
       <a-sky id="image-360" radius="10" src="#margot" color="white"></a-sky>
       
-      <a-entity position="0 2 0" layout="type: circle; radius: 4; plane:xz;">
-        <a-entity look-at="[camera]" template="src: #link" data-src="#margot" data-thumb="#ambiente-thumb"></a-entity>
-         <a-entity look-at="[camera]" template="src: #link" data-src="#margot" data-thumb="#ambiente-thumb"></a-entity>
-        <a-entity look-at="[camera]" template="src: #link" data-src="#margot" data-thumb="#ambiente-thumb"></a-entity>
-        <a-entity look-at="[camera]" template="src: #link" data-src="#margot" data-thumb="#ambiente-thumb"></a-entity>
+    
+       <a-entity position="0 0 0" layout="type: cube; align:center;radius=10">
+          <a-entity look-at="[camera]" template="src: #link" data-src="#margot" data-thumb="#ambiente-thumb"></a-entity>
+          <a-entity look-at="[camera]" template="src: #link" data-src="#margot" data-thumb="#ambiente-thumb"></a-entity>
       </a-entity>
      
      
-       <a-entity  geometry="primitive: plane; width: 6; height: 4;" material="shader: flat; color: red" 
-          look-at="[camera]">
+`
 
-            <a-entity layout="type: box;align:start; columns:1;reverse:true; margin: 0.5; plane:xy;" position="0 -1.4 0">
-                <a-text value="viajes molinetes" width="12" align="center"></a-text>
-                <a-text value="179733220 viajes" align="center"></a-text>
-                <a-text value="Mensual" align="center"></a-text>
-                
-                <a-text value="Cantidad de pasajeros por molinete de todas las estaciones de la red de Subte a partir de Junio de 2013" wrap-count="50" align="center"></a-text>
-            
-                <a-text value="Desarrollo Urbano y Transporte" align="center"></a-text>
-                
-                <a-text value="Explora una muestra." align="center"></a-text>
-           
-   
-        </a-entity>
-        
-    </a-entity>
       
       <!-- Camera + cursor. -->
       <a-entity camera look-controls>

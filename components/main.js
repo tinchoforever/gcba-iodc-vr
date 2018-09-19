@@ -37,7 +37,7 @@ window.game = {
 		});
 		var max = d3.max(csv,function(d){ return d.tamanio});
 		var min = d3.min(csv,function(d){ return d.tamanio});
-		var chartScale = d3.scale.linear().domain([min,max]).range([1,100]);
+		var chartScale = d3.scaleLinear().domain([min,max]).range([1,100]);
 
 		csv.map(function(d){
 			d.barLength = chartScale(d.tamanio);
