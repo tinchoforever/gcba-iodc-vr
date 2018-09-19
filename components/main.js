@@ -39,6 +39,9 @@ window.game = {
 		csv.map(function(d){
 			d.titulo = d.titulo.toUpperCase();
 			d.isDestacado = d.destacado != '';
+			if (d.source){
+				d.code =d.source.replace('.csv','');
+			}
 			d.tamanio = parseInt(d.tamanio);
 			if (isNaN(d.tamanio)){
 				d.tamanio = 0;
@@ -95,6 +98,31 @@ window.game = {
 
 		lobbyEl.appendChild(entityEl);
 	    	
+	},
+	renderTrip: function(){
+
+	
+      d3.csv('data/' +window.game.currentDetail.source, function(c){
+			
+			c.map(function(d,i){
+				d.index = i
+			});
+			
+			
+			env.addGlobal('currentTrip',c);
+			window.game.currentTrips = c; 
+			document.getElementById('lobby-inner').setAttribute('visible',false);
+			      document.getElementById('category-circle').setAttribute('visible',false);
+			      document.getElementById('category-circle').innerHTML ='';
+			      var detailInner = document.getElementById('trip-detail');
+			      
+			      var entityInnerEl = document.createElement('a-entity');
+			      
+			      entityInnerEl.setAttribute('id', 'matrix-inner');
+			      entityInnerEl.setAttribute('do-trip-once-loaded', '');
+			      
+			      detailInner.appendChild(entityInnerEl);
+		  });
 	},
 	renderMatrix:function(){
 
@@ -167,6 +195,8 @@ window.game = {
 
 		env.addGlobal('currentDetail',currentDetail);
 		window.game.currentDetail = currentDetail;
+		
+
 	  	nunjucks.currentDetail = currentDetail;
 
 	  	var detailEl = document.querySelector('a-entity.item.active .detail');

@@ -18,18 +18,7 @@ AFRAME.registerComponent('go-to-trip', {
 
     el.addEventListener(data.on, function () {
       
-      //
-      document.getElementById('lobby-inner').setAttribute('visible',false);
-      document.getElementById('category-circle').setAttribute('visible',false);
-      document.getElementById('category-circle').innerHTML ='';
-      var detailInner = document.getElementById('trip-detail');
-      
-      var entityInnerEl = document.createElement('a-entity');
-      
-      entityInnerEl.setAttribute('id', 'matrix-inner');
-      entityInnerEl.setAttribute('do-trip-once-loaded', '');
-      
-      detailInner.appendChild(entityInnerEl);
+     window.game.renderTrip(data.item);
 
 
     });
