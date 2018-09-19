@@ -17,7 +17,7 @@ AFRAME.registerComponent('go-to-trip', {
     var el = this.el;
 
     el.addEventListener(data.on, function () {
-      window.game.goBackHome();
+      //apagar el detalle, cambiar foto apendear.
 
     });
   },

@@ -17,7 +17,18 @@ AFRAME.registerComponent('go-to-matrix', {
     var el = this.el;
 
     el.addEventListener(data.on, function () {
-      window.game.renderDetail(data.item,el);
+      //
+      document.getElementById('lobby-inner').setAttribute('visible',false);
+      document.getElementById('category-circle').setAttribute('visible',false);
+      document.getElementById('category-circle').innerHTML ='';
+      var detailInner = document.getElementById('detail-circle');
+      
+      var entityInnerEl = document.createElement('a-entity');
+      
+      entityInnerEl.setAttribute('id', 'matrix-inner');
+      entityInnerEl.setAttribute('do-matrix-once-loaded', '');
+      
+      detailInner.appendChild(entityInnerEl);
 
     });
   },

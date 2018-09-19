@@ -160,6 +160,15 @@ AFRAME.registerComponent('do-popup-once-loaded', {
 
 		  }
 		});
+
+AFRAME.registerComponent('do-matrix-once-loaded', {
+		  init: function () {
+		  	this.el.setAttribute('template',{
+		  		src:'#dataset-menu'
+		  	});
+
+		  }
+		});
 //Get Detail.
 //Setup Lobby
 	  	AFRAME.registerComponent('do-circle-once-loaded', {
