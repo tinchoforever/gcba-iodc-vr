@@ -68,40 +68,39 @@
 
                    <a-text color="black" value="{{currentDetail.descripcion}}" width="3.5" wrap-count="40" align="center"></a-text>
               <a-text color="black" value="{{currentDetail.tamanio}} filas" align="center"></a-text>
-                <a-text color="black" value="{{currentDetail.destacado}}" align="center"></a-text>
+                <a-text color="black" value="{{currentDetail.frecuencia}}" align="center"></a-text>
                 
-                <a-text color="black" value="{{currentDetail.isDestacado}}" align="center"></a-text>
+                <a-text color="black" value="{{currentDetail.autoridad}}" align="center"></a-text>
                
                 <a-entity>
                    
-                  <!-- Trip  -->
-                  {% if x.isDestacado %}
+                    <!-- Trip  -->
+                  {% if currentDetail.isDestacado %}
 
-                  <a-entity position="0 0 0.22" go-to-matrix="on: click;item:{{x.id}}"
+                  <a-entity position="0 0 0.22" go-to-matrix="on: click;item:{{currentDetail.id}}"
                       event-set__1="_event: mousedown; scale: 1 1 1"
                       event-set__2="_event: mouseup; scale: 1.2 1.2 1"
                       event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
                       event-set__4="_event: mouseleave; scale: 1 1 1" geometry="primitive: plane; width: 3; height: 0.5;" material="shader: flat; color: {{currentCategory.color}}" 
                   sound="on: click; src: #click-sound"
                   position="0 0 0" color="white" text="value: Explora una muestra; align:center">
+                  </a-entity>
                   {% else %}
                    <a-entity position="0 0 0.22"
-                      geometry="primitive: plane; width: 3; height: 0.5;" material="shader: flat; color: white" 
-                  position="0 0 0" color="{{currentCategory.color}}" text="value:'Busca otro dataset para explorar'; align:center">
+                      geometry="primitive: plane; width: 3; height: 0.5;" material="shader: flat;" 
+                      position="0 0 0" text="color:{{currentCategory.color}};value:Busca otro dataset para explorar; align:center">
+                      </a-entity>
                   {% endif %}
-                  
-                  
-                     
-                    </a-entity>
-                  </a-entity>
+
+                </a-entity>
           </a-entity>
         </script>
 
         <script id="row-detail" type="text/x-nunjucks-template">
           <a-entity geometry="primitive: plane; width: 4; height: 4;" material="shader: flat; color: white">
-            <a-entity layout="type: box;align:start; columns:2;reverse:true; margin: 0.25; plane:xy;" position="0 -1.5 0">
+            <a-entity layout="type: box;align:center; columns:2;reverse:true; margin: 0.275; plane:xy;" position="-0.75 -1.75 0">
                 {% for x in currentDetailRowDetail %}
-                <a-text color="white" value="{{x.value}}" align="left"></a-text>
+                <a-text color="white" value="{{x.value}}" width="2.75" word-wrap="30" align="left"></a-text>
                 <a-text color="white" value="{{x.key}}" width="3" word-wrap="35" align="right"></a-text>
                 {% endfor %}
                 <a-entity>
