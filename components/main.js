@@ -98,7 +98,8 @@ window.game = {
 	},
 	renderMatrix:function(){
 
-		d3.csv('data/molinetes.csv', function(c){
+
+		d3.csv('data/' +window.game.currentDetail.source, function(c){
 			
 			c.map(function(d,i){
 				d.index = i
@@ -165,6 +166,7 @@ window.game = {
 		})[0];
 
 		env.addGlobal('currentDetail',currentDetail);
+		window.game.currentDetail = currentDetail;
 	  	nunjucks.currentDetail = currentDetail;
 
 	  	var detailEl = document.querySelector('a-entity.item.active .detail');
