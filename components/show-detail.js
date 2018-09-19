@@ -78,19 +78,16 @@ AFRAME.registerComponent('show-detail', {
         d3.select(el).attr('class','item active');
         el.emit('move-now');
         animated =true;
+        
+        window.game.renderDetail(data.item);
       }
-      else{
-
-      }
-      
-      // window.game.renderDetail(data.item,el);
 
     });
     el.addEventListener('move-out', function () {
       // Create animation.
       animated =false;
-     
-      // window.game.renderDetail(data.item,el);
+      d3.select('a-entity.item.active detail').html('');
+      
 
     });
   },

@@ -91,14 +91,14 @@ window.game = {
 		env.addGlobal('currentDetail',currentDetail);
 	  	nunjucks.currentDetail = currentDetail;
 
-	  	var detailEl = document.getElementById('detail-circle');
+	  	var detailEl = document.querySelector('a-entity.item.active .detail');
 	  	detailEl.innerHTML = '';
 		var detailInnerEl = document.createElement('a-entity');
 		
 		detailInnerEl.setAttribute('id', 'detail-inner');
 		detailInnerEl.setAttribute('do-popup-once-loaded', '');
 		
-		detailEl.appendChild(detailInnerEl);
+		detailEl.append(detailInnerEl);
 		//Setup Lobby
 	  	
 
