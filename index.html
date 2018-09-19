@@ -75,7 +75,7 @@
                       event-set__1="_event: mousedown; scale: 1 1 1"
                       event-set__2="_event: mouseup; scale: 1.2 1.2 1"
                       event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
-                      event-set__4="_event: mouseleave; scale: 1 1 1" geometry="primitive: plane; width: 3; height: 0.5;" material="shader: flat; color: black" 
+                      event-set__4="_event: mouseleave; scale: 1 1 1" geometry="primitive: plane; width: 3; height: 0.5;" material="shader: flat; color: {{currentCategory.color}}" 
                   sound="on: click; src: #click-sound"
                   position="0 0 0" color="white" text="value: Explora una muestra; align:center">
                   
@@ -158,7 +158,7 @@
           {% for x in range(0,20) %}
           <a-entity look-at="[camera]" geometry="primitive: plane; height: 0.2; width: 0.8" material="side: double">
               <a-entity>
-                  <a-entity class="item" position="0 0 1" scale="0.15 0.15 0.15" geometry="primitive: plane; width: 4; height: 4;" material="side:double; shader: flat; color: #0288D1;" show-matrix="on: click;item:xxx"  event-set__1="_event: mousedown; position: 0 0 1"
+                  <a-entity class="item" position="0 0 1" scale="0.15 0.15 0.15" geometry="primitive: plane; width: 4; height: 4;" material="side:double; shader: flat; color: {{currentCategory.color}};" show-matrix="on: click;item:xxx"  event-set__1="_event: mousedown; position: 0 0 1"
                       event-set__2="_event: mouseup; position: 0 0 2"
                       event-set__3="_event: mouseenter; position: 0 0 2"
                       event-set__4="_event: mouseleave; position: 0 0 1">
@@ -202,7 +202,7 @@
             {% for x in currentCategory.firstGroup %}
             <a-entity look-at="[camera]" layout="type: box; columns:1; margin: ; plane:xy;">
                 <a-entity>
-                  <a-entity class="item" position="0 0 1" scale="0.4 0.4 0.4" geometry="primitive: plane; width: 4; height: 4;" material="side:double; shader: flat; color: #0288D1;" show-detail="on: click;item:{{x.id}}"  >
+                  <a-entity class="item" position="0 0 1" scale="0.4 0.4 0.4" geometry="primitive: plane; width: 4; height: 4;" material="side:double; shader: flat; color: {{currentCategory.color}};" show-detail="on: click;item:{{x.id}}"  >
                     <a-entity geometry="primitive: plane; width: 4; height: 4;" material="side: front">
                       <a-text color="white" align="center" color="black" value="{{x.titulo}}"  width="3.5" wrap-count="15" align="center"></a-text>
                     
@@ -233,7 +233,7 @@
              {% for x in currentCategory.secondGroup %}
             <a-entity look-at="[camera]" layout="type: box; columns:1; margin: ; plane:xy;">
                 <a-entity>
-                  <a-entity class="item" position="0 0 1" scale="0.4 0.4 0.4" geometry="primitive: plane; width: 4; height: 4;" material="side:double; shader: flat; color: #0288D1;" show-detail="on: click;item:{{x.id}}"  >
+                  <a-entity class="item" position="0 0 1" scale="0.4 0.4 0.4" geometry="primitive: plane; width: 4; height: 4;" material="side:double; shader: flat; color: {{currentCategory.color}};" show-detail="on: click;item:{{x.id}}"  >
                     <a-entity geometry="primitive: plane; width: 4; height: 4;" material="side: front">
                       <a-text color="white" align="center" color="black" value="{{x.titulo}}"  width="3.5" wrap-count="15" align="center"></a-text>
                     

@@ -11,7 +11,17 @@ window.metadata = {
 };
 //Group Datasets
 var categories =[];
-
+var colores = [];
+colores["administracion"] = "#34485E";
+colores["ambiente"] = "#99C25F";
+colores["cultura"] = "#F563A2";
+colores["actividad_economica"] = "#FCDA59";
+colores["educacion"] = "#17C3E3";
+colores["movilidad"] = "#E76056";
+colores["obra"] = "#F3A22C";
+colores["salud"] = "#2DBC98";
+colores["seguridad"] = "#0289D1";
+colores["urbanismo"] = "#9D6DB6";
 
 window.game = {
 	init:function(){
@@ -54,7 +64,8 @@ window.game = {
 	        
 
 		    categories.map(function(d){
-		    	
+		    	d.color = colores[d.key];
+		    	console.log(d.color, d.key);
 		    	d.rows = 0;
 		    	d.title = d.key.toUpperCase();
 		    	d.values.map(function(v){
