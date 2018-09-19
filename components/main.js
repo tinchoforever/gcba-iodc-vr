@@ -38,6 +38,7 @@ window.game = {
 
 		csv.map(function(d){
 			d.titulo = d.titulo.toUpperCase();
+			d.isDestacado = d.destacado != '';
 			d.tamanio = parseInt(d.tamanio);
 			if (isNaN(d.tamanio)){
 				d.tamanio = 0;
@@ -51,6 +52,9 @@ window.game = {
 
 		csv.map(function(d){
 			d.barLength = d.tamanio/100000 + 1;
+			if (d.barLength > 200){
+				d.barLength = 200;
+			}
 		})
 
 
