@@ -118,25 +118,61 @@
           {% for row in currentTrip %}
           {% set loopIndex = loop.index0 %}
           <a-entity>
-          <a-entity position="0 -1.195 0" layout="type: circle; radius: 6; plane:xz;" opacity="0">
-            {% for x in range(0,4) %}
-              <a-entity look-at="[camera]" geometry="primitive: plane; width: 5; height: 0.5;" material="shader: flat; color: black" 
-                  sound="on: click; src: #click-sound"
-                  position="0 0 0" color="black" text="value: {{row.nombre}}:width:3; align:center"></a-entity>
-            {% endfor %}
-          </a-entity>
-          <a-sky radius="100" src="images/360-detail/{{currentDetail.code}}/{{row.imagen}}" color="white" opacity="1">
-          </a-sky>
-           <a-animation attribute="opacity" 
-              delay="{{loopIndex*10000}}"
-               dur="10000"
-               from="0"
-               to="1"></a-animation>
-             <a-animation attribute="opacity" 
-              delay="{{loopIndex+1*10000}}"
-               dur="10000"
-               from="0"
-               to="1"></a-animation>
+          
+          {% if loopIndex == 0 %}
+            <a-entity opacity="1" position="0 -1.195 0" layout="type: circle; radius: 6; plane:xz;" opacity="0">
+              {% for x in range(0,4) %}
+                <a-entity look-at="[camera]" geometry="primitive: plane; width: 5; height: 0.5;" material="shader: flat; color: black" 
+                    sound="on: click; src: #click-sound"
+                    position="0 0 0" color="black" text="value: {{row.nombre}}:width:3; align:center"></a-entity>
+              {% endfor %}
+
+               <a-animation attribute="opacity" 
+                delay="{{(loopIndex+1)*10000}}"
+                 dur="10000"
+                 from="1"
+                 to="0"></a-animation>
+            </a-entity>
+            <a-sky radius="100" src="images/360-detail/{{currentDetail.code}}/{{row.imagen}}" color="white" opacity="1">
+               <a-animation attribute="opacity" 
+                delay="{{(loopIndex+1)*10000}}"
+                 dur="10000"
+                 from="1"
+                 to="0"></a-animation>
+            </a-sky>
+            {% else %}
+            <a-entity opacity="0" position="0 -1.195 0" layout="type: circle; radius: 6; plane:xz;" opacity="0">
+              {% for x in range(0,4) %}
+                  <a-entity look-at="[camera]" opacity="0" geometry="primitive: plane; width: 5; height: 0.5;" material="shader: flat; color: black" 
+                      sound="on: click; src: #click-sound"
+                      position="0 0 0" color="black" text="value: {{row.nombre}}:width:3; align:center">
+                
+                      </a-entity>
+              {% endfor %}
+              <a-animation attribute="opacity" 
+                  delay="{{loopIndex*10000}}"
+                   dur="{{loopIndex*10000}}"
+                   from="0"
+                   to="1"></a-animation>
+                 <a-animation attribute="opacity" 
+                  delay="{{loopIndex+1*10000}}"
+                   dur="10000"
+                   from="1"
+                   to="0"></a-animation>
+            </a-entity>
+             <a-sky radius="100" src="images/360-detail/{{currentDetail.code}}/{{row.imagen}}" color="white" opacity="0">
+              <a-animation attribute="opacity" 
+                delay="{{loopIndex*10000}}"
+                 dur="{{loopIndex*10000}}"
+                 from="0"
+                 to="1"></a-animation>
+               <a-animation attribute="opacity" 
+                delay="{{(loopIndex+1)*10000}}"
+                 dur="10000"
+                 from="1"
+                 to="0"></a-animation>
+            </a-sky>
+          {% endif %}
           </a-entity>
 
           {% endfor %}
