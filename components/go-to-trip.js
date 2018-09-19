@@ -17,7 +17,18 @@ AFRAME.registerComponent('go-to-trip', {
     var el = this.el;
 
     el.addEventListener(data.on, function () {
-      //apagar el detalle, cambiar foto apendear.
+      //
+      document.getElementById('lobby-inner').setAttribute('visible',false);
+      document.getElementById('category-circle').setAttribute('visible',false);
+      document.getElementById('category-circle').innerHTML ='';
+      var detailInner = document.getElementById('trip-detail');
+      
+      var entityInnerEl = document.createElement('a-entity');
+      
+      entityInnerEl.setAttribute('id', 'matrix-inner');
+      entityInnerEl.setAttribute('do-trip-once-loaded', '');
+      
+      detailInner.appendChild(entityInnerEl);
 
     });
   },

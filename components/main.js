@@ -169,6 +169,15 @@ AFRAME.registerComponent('do-matrix-once-loaded', {
 
 		  }
 		});
+
+AFRAME.registerComponent('do-trip-once-loaded', {
+		  init: function () {
+		  	this.el.setAttribute('template',{
+		  		src:'#trip-menu'
+		  	});
+
+		  }
+		});
 //Get Detail.
 //Setup Lobby
 	  	AFRAME.registerComponent('do-circle-once-loaded', {

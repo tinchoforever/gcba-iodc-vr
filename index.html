@@ -70,7 +70,7 @@
                    <a-text color="black" value="{{currentDetail.descripcion}}" width="3.5" wrap-count="40" align="center"></a-text>
               
                 <a-entity>
-                   <a-entity position="0 0 0.22" go-to-matrix="on: click;item:{{x.id}}"
+                   <a-entity position="0 0 0.22" go-to-trip="on: click;item:{{x.id}}"
                       event-set__1="_event: mousedown; scale: 1 1 1"
                       event-set__2="_event: mouseup; scale: 1.2 1.2 1"
                       event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
@@ -84,7 +84,47 @@
           </a-entity>
         </script>
         
+        <script id="trip-menu" type="text/x-nunjucks-template">
+           <a-sky id="image-1" radius="10" src="images/360-detail/metrobus-2013.png" color="white" opacity="1">
+       <a-animation attribute="opacity"
+                begin="start"
+                delay="0"
+               dur="10000"
+             
+               to="1"></a-animation>
 
+    </a-sky>
+
+    <a-sky id="image-2" radius="10" src="images/360-detail/metrobus-2017.png" color="white" opacity="0">
+       <a-animation attribute="opacity"
+                begin="start"
+                delay="25000"
+               dur="10000"
+             
+               to="1"></a-animation>
+
+    </a-sky>
+
+    <a-sky id="image-3" radius="10" src="images/360-detail/tunel-2013.png" color="white" opacity="0">
+       <a-animation attribute="opacity"
+                begin="start"
+                delay="40000"
+               dur="10000"
+             
+               to="1"></a-animation>
+
+    </a-sky>
+
+    <a-sky id="image-4" radius="10" src="images/360-detail/tunel-2017.png" color="white" opacity="0">
+       <a-animation attribute="opacity"
+                begin="start"
+                delay="60000"
+               dur="10000"
+             
+               to="1"></a-animation>
+
+    </a-sky>
+        </script>
         <script id="dataset-menu" type="text/x-nunjucks-template">
         <a-entity position="0 2.5 0" layout="type: circle; radius: 4; plane:xz;">
           {% for x in range(0,20) %}
@@ -323,6 +363,7 @@
       <a-entity id="lobby-circle"></a-entity> 
       <a-entity id="category-circle"></a-entity> 
       <a-entity id="detail-circle"></a-entity> 
+      <a-entity id="trip-detail"></a-entity> 
 
 
       <!-- Camera + cursor. -->
