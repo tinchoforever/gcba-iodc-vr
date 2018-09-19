@@ -17,6 +17,7 @@ AFRAME.registerComponent('go-to-trip', {
     var el = this.el;
 
     el.addEventListener(data.on, function () {
+      
       //
       document.getElementById('lobby-inner').setAttribute('visible',false);
       document.getElementById('category-circle').setAttribute('visible',false);
@@ -29,6 +30,7 @@ AFRAME.registerComponent('go-to-trip', {
       entityInnerEl.setAttribute('do-trip-once-loaded', '');
       
       detailInner.appendChild(entityInnerEl);
+
 
     });
   },

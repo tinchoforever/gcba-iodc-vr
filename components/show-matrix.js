@@ -46,7 +46,7 @@ AFRAME.registerComponent('show-matrix', {
         el.emit('move-now');
         animated =true;
         
-        window.game.datasetRowDetail(data.item);
+        window.game.datasetRowDetail(data.item,el);
       }
 
     });

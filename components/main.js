@@ -92,14 +92,55 @@ window.game = {
 		lobbyEl.appendChild(entityEl);
 	    	
 	},
+	renderMatrix:function(){
+
+		d3.csv('data/molinetes.csv', function(c){
+			
+			c.map(function(d,i){
+				d.index = i
+			});
+			
+			var cArray = [];
+			for (var i = 0; i < 5; i++) {
+				cArray.push(c.slice(i*20,(i+1)*20));
+			}
+			
+
+			env.addGlobal('matrixArray',cArray);
+			window.game.currentItemDataSet = c; 
+
+			document.getElementById('lobby-inner').setAttribute('visible',false);
+		      document.getElementById('category-circle').setAttribute('visible',false);
+		      document.getElementById('category-circle').innerHTML ='';
+		      var detailInner = document.getElementById('detail-circle');
+		      
+		      var entityInnerEl = document.createElement('a-entity');
+		      
+		      entityInnerEl.setAttribute('id', 'matrix-inner');
+		      entityInnerEl.setAttribute('do-matrix-once-loaded', '');
+		      
+		      detailInner.appendChild(entityInnerEl);
+		  });
+      
+  	},
 	datasetRowDetail:function(datasetKey,element){
 
-		var currentDetail = window.metadata.datasets.filter(function(c){
-			return c.id == datasetKey;
+		var currentDetail = window.game.currentItemDataSet.filter(function(c){
+			return c.index == parseInt(datasetKey);
 		})[0];
+		var result = [];
+		    for( var property in currentDetail) {
+		        var obj = {
+		        	key:property,
+		        	value: currentDetail[property]
+		        }
+		        result.push( obj ); 
+		    }
+    
+		
 
-		env.addGlobal('currentDetail',currentDetail);
-	  	nunjucks.currentDetail = currentDetail;
+		env.addGlobal('currentDetailRowDetail',result);
+	  	nunjucks.currentDetailRowDetail = result;
 
 	  	var detailEl = document.querySelector('a-entity.item.active .detail');
 	  	detailEl.innerHTML = '';
