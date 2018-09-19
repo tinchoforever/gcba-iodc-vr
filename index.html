@@ -88,14 +88,12 @@
         <script id="row-detail" type="text/x-nunjucks-template">
           <a-entity geometry="primitive: plane; width: 4; height: 4;" material="shader: flat; color: white">
 
-            <a-entity layout="type: box;align:start; columns:2;reverse:true; margin: 1; plane:xy;" position="0 -1 0">
+            <a-entity layout="type: box;align:start; columns:2;reverse:true; margin: 1; plane:xy;" position="0 -1.5 0">
                
-                <a-text color="black" value="200 s" align="right"></a-text>
-                 <a-text color="black" value="Dato 1" width="4" word-wrap="30" align="left"></a-text>
-              
-               
-                   <a-text color="black" value="300" width="3.5" wrap-count="40" align="right"></a-text>
-                <a-text color="black" value="Dato 2" align="left"></a-text>
+                <a-text color="black" value="200" align="right"></a-text>
+                <a-text color="black" value="Dato 1" width="4" word-wrap="30" align="left"></a-text>
+                <a-text color="black" value="300" align="right"></a-text>
+                <a-text color="black" value="Dato 2" width="4" word-wrap="30" align="left"></a-text>
                 <a-entity>
               </a-entity>
           </a-entity>
@@ -155,43 +153,7 @@
     </a-sky>
         </script>
         <script id="dataset-menu" type="text/x-nunjucks-template">
-          <a-entity position="0 4 0" layout="type: circle; radius: 4; plane:xz;">
-              {% for x in range(0,5) %}
-                <a-entity look-at="[camera]" template="src: #poster" data-src="#lobby" data-thumb="#{{currentCategory.key}}-thumb"></a-entity>
-               {% endfor %}
-          </a-entity>
-        <a-entity position="0 2.5 0" layout="type: circle; radius: 4; plane:xz;">
-          {% for x in range(0,20) %}
-          <a-entity look-at="[camera]" geometry="primitive: plane; height: 0.8; width: 0.8" material="side: double">
-           
-          </a-entity>
-          {% endfor %}
-        </a-entity>
-        <a-entity position="0 2 0" layout="type: circle; radius: 4; plane:xz;">
-          {% for x in range(0,20) %}
-         <a-entity look-at="[camera]" geometry="primitive: plane; height: 0.8; width: 0.8" material="side: double">
          
-           
-          </a-entity>
-          {% endfor %}
-        </a-entity>
-        <a-entity position="0 1 0" layout="type: circle; radius: 4; plane:xz;">
-          {% for x in range(0,20) %}
-          <a-entity look-at="[camera]" geometry="primitive: plane; height: 0.8; width: 0.8" material="side: double">
-           
-          </a-entity>
-          {% endfor %}
-        </a-entity>
-        <a-entity position="0 1.5 0" layout="type: circle; radius: 4; plane:xz;">
-          {% for x in range(0,20) %}
-          <a-entity look-at="[camera]" geometry="primitive: plane; height: 0.8; width: 0.8" material="side: double">
-           
-
-
-
-          </a-entity>
-          {% endfor %}
-        </a-entity>
         <a-entity position="0 0.5 0" layout="type: circle; radius: 4; plane:xz;">
           {% for x in range(0,20) %}
           <a-entity look-at="[camera]" geometry="primitive: plane; height: 0.2; width: 0.8" material="side: double">
@@ -223,35 +185,8 @@
           </a-entity>
           {% endfor %}
         </a-entity>
-        <a-entity position="0 0 0" layout="type: circle; radius: 4; plane:xz;">
-          {% for x in range(0,20) %}
-          <a-entity look-at="[camera]" geometry="primitive: plane; height: 0.8; width: 0.8" material="side: double">
-           
-          </a-entity>
-          {% endfor %}
-        </a-entity>
-        <a-entity position="0 -0.5 0" layout="type: circle; radius: 4; plane:xz;">
-          {% for x in range(0,20) %}
-          <a-entity look-at="[camera]" geometry="primitive: plane; height: 0.8; width: 0.8" material="side: double">
-           
-          </a-entity>
-          {% endfor %}
-          </a-entity>
-        <a-entity position="0 -1 0" layout="type: circle; radius: 4; plane:xz;">
-          {% for x in range(0,20) %}
-          <a-entity look-at="[camera]" geometry="primitive: plane; height: 0.8; width: 0.8" material="side: double">
-           
-          </a-entity>
-          {% endfor %}
-          </a-entity>
-          <a-entity position="0 -1.5 0" layout="type: circle; radius: 4; plane:xz;">
-          {% for x in range(0,20) %}
-              <a-entity look-at="[camera]" geometry="primitive: plane; height: 0.8; width: 0.8" material="side: double">
-                </a-entity>
-          {% endfor %}
-        </a-entity>
-        </a-entity>
-
+       
+        
         </script>
         
 
@@ -295,23 +230,30 @@
             </a-entity>
 
          <a-entity layout="type: circle; radius: 8; plane:xz;"  position="0 -0.85 0">
-            {% for x in currentCategory.secondGroup %}
-             <a-entity look-at="[camera]" layout="type: box; columns:1; margin: ; plane:xy;">
+             {% for x in currentCategory.secondGroup %}
+            <a-entity look-at="[camera]" layout="type: box; columns:1; margin: ; plane:xy;">
                 <a-entity>
-                  <a-entity >
-                    <a-entity position="0 -{{x.barPosition+0.75}} 0" geometry="primitive: plane;width:1;height:{{x.barLength}}" material="side:double; shader: flat; color: white" >
-                    </a-entity>
-                </a-entity>
-                  <a-entity  class="item" position="0 0 1" scale="0.45 0.45 0.45" geometry="primitive: plane; width: 4; height: 4;" material="side:double; shader: flat; color: transparent" show-detail="on: click;item:{{x.id}}" >
+                  <a-entity class="item" position="0 0 1" scale="0.4 0.4 0.4" geometry="primitive: plane; width: 4; height: 4;" material="side:double; shader: flat; color: #0288D1;" show-detail="on: click;item:{{x.id}}"  >
                     <a-entity geometry="primitive: plane; width: 4; height: 4;" material="side: front">
-                      <a-text  align="center" color="black" value="{{x.titulo}}"  width="3.75" wrap-count="15" align="center"></a-text>
-                     <a-text  align="center" position="0 1.25 0" color="black" value="(X)"  width="3.75" wrap-count="15" align="center"></a-text>
+                      <a-text color="white" align="center" color="black" value="{{x.titulo}}"  width="3.5" wrap-count="15" align="center"></a-text>
+                    
                      </a-entity>
                      <a-entity class="detail" position="0 0 -0.2" rotation="0 180 0" geometry="primitive: plane; width: 4; height: 4;" material="side: front">
                      </a-entity>
                   </a-entity>
                 </a-entity>
-              
+                <a-entity>
+                  <a-entity layout="type: box;align:start; columns:1;reverse:true; margin: 0.6; plane:xy;">
+                    <a-entity material="side:double; shader: flat; color: white" >
+                      {% for z in range(0,x.barLength) %}
+                      <a-entity position="0 -{{z*0.25+2.25}} 0" geometry="primitive: plane;  width: 1.8; height: 0.22;"  material="side:double; shader: flat; color: white; opacity:0.75" >
+                      </a-entity>
+                      {% endfor %}
+                    
+                   
+                  </a-entity>
+                </a-entity>
+              </a-entity>
                 
             </a-entity>
             {% endfor %}
