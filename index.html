@@ -84,6 +84,22 @@
                   </a-entity>
           </a-entity>
         </script>
+
+        <script id="row-detail" type="text/x-nunjucks-template">
+          <a-entity geometry="primitive: plane; width: 4; height: 4;" material="shader: flat; color: white">
+
+            <a-entity layout="type: box;align:start; columns:2;reverse:true; margin: 1; plane:xy;" position="0 -1 0">
+               
+                <a-text color="black" value="200 s" align="right"></a-text>
+                 <a-text color="black" value="Dato 1" width="4" word-wrap="30" align="left"></a-text>
+              
+               
+                   <a-text color="black" value="300" width="3.5" wrap-count="40" align="right"></a-text>
+                <a-text color="black" value="Dato 2" align="left"></a-text>
+                <a-entity>
+              </a-entity>
+          </a-entity>
+        </script>
         
         <script id="trip-menu" type="text/x-nunjucks-template">
           <a-entity position="0 4 0" layout="type: circle; radius: 4; plane:xz;">
@@ -180,15 +196,15 @@
           {% for x in range(0,20) %}
           <a-entity look-at="[camera]" geometry="primitive: plane; height: 0.2; width: 0.8" material="side: double">
               <a-entity>
-                  <a-entity class="item" position="0 0 1" scale="0.2 0.2 0.2" geometry="primitive: plane; width: 4; height: 4;" material="side:double; shader: flat; color: #0288D1;" show-matrix="on: click;item:xxx"  event-set__1="_event: mousedown; position: 0 0 1"
+                  <a-entity class="item" position="0 0 1" scale="0.15 0.15 0.15" geometry="primitive: plane; width: 4; height: 4;" material="side:double; shader: flat; color: #0288D1;" show-matrix="on: click;item:xxx"  event-set__1="_event: mousedown; position: 0 0 1"
                       event-set__2="_event: mouseup; position: 0 0 2"
                       event-set__3="_event: mouseenter; position: 0 0 2"
                       event-set__4="_event: mouseleave; position: 0 0 1">
-                    <a-entity geometry="primitive: plane; width: 4; height: 4;" material="side: front">
-                      <a-text color="white" align="center" color="black" value="111111"  width="3.5" wrap-count="15" align="center"></a-text>
-                    
+                    <a-entity class="poster" geometry="primitive: plane; width: 4; height: 4;" material="side: front">
+                      <a-text class="label" color="white" align="center" color="black" value="111111"  width="3.5" wrap-count="15" align="center"></a-text>
                      </a-entity>
-                     <a-entity class="detail" position="0 0 -0.2" rotation="0 180 0" geometry="primitive: plane; width: 4; height: 4;" material="side: front">
+                    <a-entity class="detail" geometry="primitive: plane; width: 4; height: 4;" material="side: front">
+                      
                      </a-entity>
                   </a-entity>
                 </a-entity>

@@ -40,7 +40,7 @@ window.game = {
 		var chartScale = d3.scaleLinear().domain([min,max]).range([1,100]);
 
 		csv.map(function(d){
-			d.barLength = d.tamanio/1000 + 1;
+			d.barLength = d.tamanio/100000 + 1;
 		})
 
 
@@ -80,6 +80,27 @@ window.game = {
 
 		lobbyEl.appendChild(entityEl);
 	    	
+	},
+	datasetRowDetail:function(datasetKey,element){
+
+		var currentDetail = window.metadata.datasets.filter(function(c){
+			return c.id == datasetKey;
+		})[0];
+
+		env.addGlobal('currentDetail',currentDetail);
+	  	nunjucks.currentDetail = currentDetail;
+
+	  	var detailEl = document.querySelector('a-entity.item.active .detail');
+	  	detailEl.innerHTML = '';
+		var detailInnerEl = document.createElement('a-entity');
+		
+		detailInnerEl.setAttribute('id', 'detail-inner');
+		detailInnerEl.setAttribute('do-row-detail-once-loaded', '');
+		
+		detailEl.append(detailInnerEl);
+		//Setup Lobby
+	  	
+
 	},
 	renderDetail:function(datasetKey,element){
 
@@ -182,6 +203,14 @@ AFRAME.registerComponent('do-trip-once-loaded', {
 		  init: function () {
 		  	this.el.setAttribute('template',{
 		  		src:'#trip-menu'
+		  	});
+
+		  }
+		});
+AFRAME.registerComponent('do-row-detail-once-loaded', {
+		  init: function () {
+		  	this.el.setAttribute('template',{
+		  		src:'#row-detail'
 		  	});
 
 		  }
