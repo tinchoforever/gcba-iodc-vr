@@ -95,10 +95,14 @@
             {% for x in currentCategory.firstGroup %}
             <a-entity look-at="[camera]" layout="type: box; columns:1; margin: 0.85; plane:xy;">
                 <a-entity>
-                  <a-entity  class="item" position="0 0 1" scale="0.5 0.5 0.5" geometry="primitive: plane; width: 4; height: 4;" material="side:double; shader: flat; color: transparent" 
-                    show-detail="on: click;item:{{x.id}}" >
-                     <a-text  align="center" color="black" value="{{x.titulo}}"  width="3.75" wrap-count="15" align="center"></a-text>
+                  <a-entity  class="item" position="0 0 1" scale="0.5 0.5 0.5" geometry="primitive: plane; width: 4; height: 4;" material="side:double; shader: flat; color: transparent" show-detail="on: click;item:{{x.id}}" >
+                    <a-entity geometry="primitive: plane; width: 4; height: 4;" material="side: front">
+                      <a-text  align="center" color="black" value="{{x.titulo}}"  width="3.75" wrap-count="15" align="center"></a-text>
                      <a-text  align="center" position="0 1.25 0" color="black" value="(X)"  width="3.75" wrap-count="15" align="center"></a-text>
+                     </a-entity>
+                     <a-entity class="detail" position="0 0 -0.2" rotation="0 180 0" geometry="primitive: plane; width: 4; height: 4;" material="side: front">
+                        
+                     </a-entity>
                   </a-entity>
                 </a-entity>
                 <a-entity >
