@@ -20,7 +20,7 @@ AFRAME.registerComponent('go-to-trip', {
       
      window.game.renderTrip(data.item);
      document.getElementById('image-360').setAttribute('material', 'src','');
-     document.getElementById('image-360').setAttribute('material', 'color','black ');
+     document.getElementById('image-360').setAttribute('material', 'color','black');
       
 
     });

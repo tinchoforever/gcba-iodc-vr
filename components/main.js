@@ -97,7 +97,9 @@ window.game = {
 		entityEl.setAttribute('id', 'lobby-inner');
 
 		lobbyEl.appendChild(entityEl);
-	    document.getElementById('circle-floor').setAttribute('material', 'src', '');	
+		
+
+
 	},
 	renderTrip: function(){
 
@@ -307,9 +309,11 @@ AFRAME.registerComponent('do-row-detail-once-loaded', {
 //Setup Lobby
 	  	AFRAME.registerComponent('do-circle-once-loaded', {
 		  init: function () {
+
 		  	this.el.setAttribute('template',{
 		  		src:'#circle-menu'
 		  	});
+		  	document.getElementById('circle-floor').setAttribute('material', 'src', '');
 
 		  }
 		});
