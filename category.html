@@ -87,7 +87,33 @@
       <a-entity position="0 -1.195 0" layout="type: circle; radius: 6; plane:xz;">
         <a-entity look-at="[camera]" geometry="primitive: plane; width: 5; height: 0.5;" material="shader: flat; color: black" 
                   sound="on: click; src: #click-sound"
-                  position="0 0 0" color="black" text="value: Antes Av. San Martin; align:center"></a-entity>
+                  position="0 0 0" color="black">
+                  <a-animation attribute="material.opacity" 
+                   delay="0"
+                   dur="10000"
+                   from="0"
+                   to="1"></a-animation>
+                 <a-animation attribute="material.opacity" 
+                  delay="10000"
+                   dur="10000"
+                   from="1"
+                   to="0"></a-animation>
+                  <a-text value="Antes Av. San Martin" align="center">
+                    <a-animation attribute="opacity" 
+                   delay="0"
+                   dur="10000"
+                   from="0"
+                   to="1"></a-animation>
+                 <a-animation attribute="opacity" 
+                  delay="10000"
+                   dur="10000"
+                   from="1"
+                   to="0"></a-animation>
+                  </a-text>
+                
+                      
+
+          </a-entity>
          <a-entity look-at="[camera]"  geometry="primitive: plane; width: 3; height: 0.5;" material="shader: flat; color: black" 
                   sound="on: click; src: #click-sound"
                   position="0 0 0" color="black" text="value: Antes Av. San Martin; align:center"></a-entity>
