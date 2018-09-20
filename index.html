@@ -389,10 +389,10 @@
             sound="on: click; src: #click-sound"
             "></a-entity>
               <a-entity>
-                  <a-entity position="0.012676036232893928 1.5   0.00863929409054304" layout="type: box;align:start; columns:1;reverse:true; margin: 0.6; plane:xy;">
+                  <a-entity position="0.012676036232893928 1.5   0.00863929409054304" layout="type: box;align:start; columns:1;reverse:true; margin: 0; plane:xy;">
                     <a-entity material="side:double; shader: flat; color: white" >
                       {% for x in range(0,count) %}
-                      <a-entity position="0 {{x/10 + 0.2}} 0" geometry="primitive: plane;  width: 2; height: 0.05;"  material="side:double; shader: flat; color: white" >
+                      <a-entity position="0 {{x/3.5 + 0.425}} 0" geometry="primitive: plane;  width: 2; height: 0.25;"  material="side:double; shader: flat; color: white" >
                       </a-entity>
                       {% endfor  %}
                   </a-entity>
@@ -410,7 +410,7 @@
 
 
       <!-- 360-degree image. -->
-      <a-sky id="image-360" radius="60" src="#lobby" color="white"></a-sky>
+      <a-sky id="image-360" rotation="0 14 0" radius="60" src="#lobby" color="white"></a-sky>
       <!-- Miradas Logo -->
        <a-entity  id="circle-floor" 
        go-to-lobby="on: click; target: #image-360; src: #lobby;"
