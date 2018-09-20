@@ -256,6 +256,7 @@ window.game = {
 	  	document.getElementById('category-inner').setAttribute('visible',true);
 	  	document.getElementById('category-circle').setAttribute('visible',true);
 	  	document.getElementById('circle-floor').setAttribute('material', 'src', '#' + currentCategory.key +  '-base');
+
 	}
 
 
@@ -269,6 +270,12 @@ AFRAME.registerComponent('do-rectangle-once-loaded', {
 		  		src:'#rectangle-menu'
 		  	});
 
+  			setTimeout(function(){
+  				d3.selectAll('a-entity.item').dispatch('category-start');
+  			},1000);
+
+  		
+		  	
 		  }
 		});
 AFRAME.registerComponent('do-popup-once-loaded', {
@@ -286,11 +293,14 @@ AFRAME.registerComponent('do-matrix-once-loaded', {
 		  		src:'#dataset-menu'
 		  	});
 
+		  	
+
 		  }
 		});
 
 AFRAME.registerComponent('do-trip-once-loaded', {
 		  init: function () {
+
 		  	this.el.setAttribute('template',{
 		  		src:'#trip-menu'
 		  	});

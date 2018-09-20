@@ -27,10 +27,8 @@ AFRAME.registerComponent('set-image', {
       // Wait for fade to complete.
       
       window.currentMove = data.link;
-      setTimeout(function () {
-        // Set image.
-        data.target.setAttribute('material', 'src', data.src);
-      }, data.dur);
+      data.target.setAttribute('material', 'src', data.src);
+    
 
       window.game.renderCategory(window.currentMove);
 

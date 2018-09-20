@@ -140,6 +140,8 @@
               {% for x in range(0,4) %}
                 <a-entity look-at="[camera]" geometry="primitive: plane; width: 5; height: 0.5;" material="shader: flat; color: black" sound="on: click; src: #click-sound"
                     position="0 0 0" color="black">
+
+
                     <a-text value="{{row.nombre}}" width="3" align="center"> <a-animation attribute="opacity" 
                         delay="10000"
                          dur="10000"
@@ -279,9 +281,16 @@
           </a-entity> -->
            <a-entity layout="type: circle; radius: 8; plane:xz;"  position="0 0.35 0">
             {% for x in currentCategory.firstGroup %}
+            {% set loopIndex = loop.index0 %}
             <a-entity look-at="[camera]" layout="type: box; columns:1; margin: ; plane:xy;">
                 <a-entity>
-                  <a-entity class="item" position="0 0 1" scale="0.4 0.4 0.4" geometry="primitive: plane; width: 4; height: 4;" material="side:double; shader: flat; color: {{currentCategory.color}};" show-detail="on: click;item:{{x.id}}"  >
+                  <a-entity class="item" position="0 0 1" scale="0 0 0" geometry="primitive: plane; width: 4; height: 4;" material="side:double; shader: flat; color: {{currentCategory.color}};" show-detail="on: click;item:{{x.id}}"  >
+                    <a-animation attribute="scale" 
+                        delay="{{loopIndex*400 + 400}}"
+                         dur="400"
+                         begin="category-start"
+                         from="0 0 0"
+                         to="0.4 0.4 0.4"></a-animation>
                     <a-entity geometry="primitive: plane; width: 4; height: 4;" material="shader: flat;">
                       <a-text color="white" align="center" color="black" value="{{x.titulo}}"  width="3.5" wrap-count="15" align="center"></a-text>
                       {% if x.isDestacado %}
@@ -308,7 +317,8 @@
                   </a-entity>
                 </a-entity>
               </a-entity>
-                
+                 
+                 
             </a-entity>
             {% endfor %}
        
@@ -316,9 +326,16 @@
 
          <a-entity layout="type: circle; radius: 8; plane:xz;"  position="0 -0.85 0">
              {% for x in currentCategory.secondGroup %}
+             {% set loopIndex = loop.index0 %}
             <a-entity look-at="[camera]" layout="type: box; columns:1; margin: ; plane:xy;">
                 <a-entity>
-                  <a-entity class="item" position="0 0 1" scale="0.4 0.4 0.4" geometry="primitive: plane; width: 4; height: 4;" material="side:double; shader: flat; color: {{currentCategory.color}};" show-detail="on: click;item:{{x.id}}"   >
+                  <a-entity class="item" position="0 0 1" scale="0 0 0" geometry="primitive: plane; width: 4; height: 4;" material="side:double; shader: flat; color: {{currentCategory.color}};" show-detail="on: click;item:{{x.id}}"   >
+                     <a-animation attribute="scale" 
+                        delay="{{loopIndex*400 + 400}}"
+                         dur="400"
+                         begin="category-start"
+                         from="0 0 0"
+                         to="0.4 0.4 0.4"></a-animation>
                     <a-entity geometry="primitive: plane; width: 4; height: 4;" material="side: front">
                       <a-text color="white" align="center" color="black" value="{{x.titulo}}"  width="3.5" wrap-count="15" align="center"></a-text>
                     
