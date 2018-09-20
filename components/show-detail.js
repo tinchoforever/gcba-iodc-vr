@@ -20,7 +20,7 @@ AFRAME.registerComponent('show-detail', {
         property: 'scale',
         startEvents: 'move-now',
         dir: 'alternate',
-        dur: 300,
+        dur: 175,
         from: '0.5 0.5 0.5',
         to: '1 1 1'
       });
@@ -28,7 +28,7 @@ AFRAME.registerComponent('show-detail', {
         property: 'rotation',
         startEvents: 'move-now',
         dir: 'alternate',
-        dur: 300,
+        dur: 175,
         from: '0 0 0',
         to: '0 180 0'
       });
@@ -36,7 +36,7 @@ AFRAME.registerComponent('show-detail', {
         property: 'position',
         startEvents: 'move-now',
         dir: 'alternate',
-        dur: 300,
+        dur: 175,
         from: '0 0 0',
         to: '0 0 4'
       });
@@ -44,7 +44,7 @@ AFRAME.registerComponent('show-detail', {
         property: 'scale',
         startEvents: 'move-out',
         dir: 'alternate',
-        dur: 300,
+        dur: 175,
         from: '1 1 1',
         to: '0.5 0.5 0.5'
         
@@ -53,7 +53,7 @@ AFRAME.registerComponent('show-detail', {
         property: 'position',
         startEvents: 'move-out',
         dir: 'alternate',
-        dur: 300,
+        dur: 175,
         from: '0 0 4',
         to: '0 0 0'
       });
@@ -61,7 +61,7 @@ AFRAME.registerComponent('show-detail', {
         property: 'rotation',
         startEvents: 'move-out',
         dir: 'alternate',
-        dur: 300,
+        dur: 175,
         from: '0 180 0',
         to: '0 0 0'
       });
