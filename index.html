@@ -99,7 +99,7 @@
 
         <script id="row-detail" type="text/x-nunjucks-template">
           <a-entity geometry="primitive: plane; width: 4; height: 4;" material="shader: flat; color: white">
-            <a-entity layout="type: box;align:center; columns:2;reverse:true; margin: 0.275; plane:xy;" position="-0.75 -1.75 0">
+            <a-entity layout="type: box;align:end; columns:2;reverse:true; margin: 0.275; plane:xy;" position="-0.75 -1.75 0">
                 {% for x in currentDetailRowDetail %}
                 <a-text color="white" value="{{x.value}}" width="2.75" word-wrap="30" align="left"></a-text>
                 <a-text color="white" value="{{x.key}}" width="3" word-wrap="35" align="right"></a-text>
@@ -225,7 +225,7 @@
 
         <a-entity position="0 {{(loopIndex*0.5) -1.5}} 0" layout="type: circle; radius: 4; plane:xz;">
           {% for x in item %}
-          {{item}}
+       
           <a-entity look-at="[camera]" geometry="primitive: plane; height: 0.2; width: 0.8" material="side: double">
               <a-entity>
                   <a-entity class="item" position="0 0 1" scale="0.15 0.15 0.15" geometry="primitive: plane; width: 4; height: 4;" material="side:double; shader: flat; color: {{currentCategory.color}};" show-matrix="on: click;item:{{x.index}}"  event-set__1="_event: mousedown; position: 0 0 1"
