@@ -34,12 +34,20 @@
         <audio id="click-sound" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
         
         
-        <img id="margot" crossorigin="anonymous" src="stories/01/margot/assets/photos/adentro-dia.jpg">
-        <img id="borges" crossorigin="anonymous" src="stories/01/borges/img/bgEscena1.jpg">
-        <img id="eter" crossorigin="anonymous" src="stories/01/eternauta/02-01-devoto-4.jpg">
-        <img id="santelmo" crossorigin="anonymous" src="stories/01/santelmo/img/bgEscena1.jpg">
-
-
+        <img id="administracion-sphere" crossorigin="anonymous" src="stories/01/borges/img/bgEscena1.jpg">
+        <img id="salud-sphere" crossorigin="anonymous" src="stories/01/eternauta/02-01-devoto-4.jpg">
+        <img id="ambiente-sphere" crossorigin="anonymous" src="stories/01/santelmo/img/bgEscena1.jpg">
+         <img id="obra-sphere" crossorigin="anonymous" src="images/360-detail/obras/5100-d.png">
+        <img id="salud-sphere" crossorigin="anonymous" src="stories/01/eternauta/02-01-devoto-4.jpg">
+        <img id="ambiente-sphere" crossorigin="anonymous" src="stories/01/santelmo/img/bgEscena1.jpg">
+         <img id="cultura-sphere" crossorigin="anonymous" src="stories/01/borges/img/bgEscena1.jpg">
+        <img id="salud-sphere" crossorigin="anonymous" src="stories/01/eternauta/02-01-devoto-4.jpg">
+        <img id="educacion-sphere" crossorigin="anonymous" src="stories/01/eternauta/02-01-devoto-4.jpg">
+         <img id="urbanismo-sphere" crossorigin="anonymous" src="stories/01/borges/img/bgEscena1.jpg">
+          <img id="seguridad-sphere" crossorigin="anonymous" src="stories/01/santelmo/img/bgEscena1.jpg">
+         <img id="movilidad-sphere" crossorigin="anonymous" src="stories/01/eternauta/02-01-devoto-4.jpg">
+         <img id="actividad_economica-sphere" crossorigin="anonymous" src="stories/01/santelmo/img/bgEscena1.jpg">
+          
         <img id="lobby" crossorigin="anonymous" src="images/lobby/00.png">
 
 
@@ -56,11 +64,7 @@
 
         <img id="start" src="images/destacado.png">
 
-
-        <img id="khipu" crossorigin="anonymous" src="stories/02/khipu/rooftop.jpg">
-        <img id="sonrisa" crossorigin="anonymous" src="stories/02/sonria/img-1.jpg">
-        <img id="terror" crossorigin="anonymous" src="stories/02/terror/Escena-03-negativo.jpg">
-        
+ 
         <script id="dataset-detail-menu" type="text/x-nunjucks-template">
           <a-entity geometry="primitive: plane; width: 4; height: 4;" material="shader: flat; color: white">
 
@@ -101,7 +105,7 @@
           <a-entity geometry="primitive: plane; width: 4; height: 4;" material="shader: flat; color: white">
             <a-entity layout="type: box;align:end; columns:2;reverse:true; margin: 0.275; plane:xy;" position="-0.75 -1.75 0">
                 {% for x in currentDetailRowDetail %}
-                <a-text color="white" value="{{x.value}}" width="2.75" word-wrap="30" align="left"></a-text>
+                <a-text color="white" value="{{x.value}}" width="2.65" word-wrap="30" align="left"></a-text>
                 <a-text color="white" value="{{x.key}}" width="3" word-wrap="35" align="right"></a-text>
                 {% endfor %}
                 <a-entity>
@@ -337,7 +341,7 @@
         <a-entity layout="type: circle; radius: 6; plane:xz;">
             
             {% for x in categories %}
-               <a-entity look-at="[camera]" template="src: #link" data-src="#margot" data-link="{{x.key}}" data-thumb="#{{x.key}}-thumb" data-percentage="{{x.percentage}}" data-count="{{x.values.length}}" data-rows="{{x.rowsLabel}}"></a-entity>
+               <a-entity look-at="[camera]" template="src: #link" data-src="#{{x.key}}-sphere" data-link="{{x.key}}" data-thumb="#{{x.key}}-thumb" data-percentage="{{x.percentage}}" data-count="{{x.values.length}}" data-rows="{{x.rowsLabel}}"></a-entity>
             {% endfor %}
              
       </a-entity>
