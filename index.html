@@ -54,6 +54,7 @@
         <img id="urbanismo-thumb" crossorigin="anonymous" src="images/posters/poster-urbanismo.png">
         <img id="seguridad-thumb" crossorigin="anonymous" src="images/posters/poster-seguridad.png">
 
+        <img id="start" src="images/destacado.png">
 
 
         <img id="khipu" crossorigin="anonymous" src="stories/02/khipu/rooftop.jpg">
@@ -70,7 +71,7 @@
               <a-text color="black" value="{{currentDetail.tamanio}} filas" align="center"></a-text>
                 <a-text color="black" value="{{currentDetail.frecuencia}}" align="center"></a-text>
                 
-                <a-text color="black" value="{{currentDetail.autoridad}}" align="center"></a-text>
+                <a-text color="black" width="4" value="{{currentDetail.autoridad}}" align="center"></a-text>
                
                 <a-entity>
                    
@@ -193,7 +194,7 @@
               {% endfor %}
               
             </a-entity>
-             <a-sky radius="100" src="images/360-detail/{{currentDetail.code}}/{{row.imagen}}" color="white" opacity="0">
+             <a-sky radius="60" src="images/360-detail/{{currentDetail.code}}/{{row.imagen}}" color="white" opacity="0">
               <a-animation attribute="opacity" 
                 delay="{{loopIndex*10000}}"
                  dur="10000"
@@ -263,7 +264,10 @@
                   <a-entity class="item" position="0 0 1" scale="0.4 0.4 0.4" geometry="primitive: plane; width: 4; height: 4;" material="side:double; shader: flat; color: {{currentCategory.color}};" show-detail="on: click;item:{{x.id}}"  >
                     <a-entity geometry="primitive: plane; width: 4; height: 4;" material="side: front">
                       <a-text color="white" align="center" color="black" value="{{x.titulo}}"  width="3.5" wrap-count="15" align="center"></a-text>
-                    
+                      {% if currentDetail.isDestacado %}
+                    <!-- Using the asset management system. -->
+                     <a-image src="#start"></a-image>
+                     {% endif %}
                      </a-entity>
                      <a-entity class="detail" position="0 0 -0.2" rotation="0 180 0" geometry="primitive: plane; width: 4; height: 4;" material="side: front">
                      </a-entity>

@@ -17,8 +17,8 @@ AFRAME.registerComponent('go-to-matrix', {
     var el = this.el;
 
     el.addEventListener(data.on, function () {
-      window.game.renderMatrix(el);
-
+      window.game.renderMatrix(data.item,el);
+      
     });
   },
 
