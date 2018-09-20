@@ -54,9 +54,9 @@ window.game = {
 		var chartScale = d3.scaleLinear().domain([min,max]).range([1,100]);
 
 		csv.map(function(d){
-			d.barLength = d.tamanio/100000 + 1;
-			if (d.barLength > 200){
-				d.barLength = 200;
+			d.barLength = d.tamanio/200000 + 1;
+			if (d.barLength > 100){
+				d.barLength = 100;
 			}
 		})
 
