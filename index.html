@@ -264,9 +264,12 @@
                   <a-entity class="item" position="0 0 1" scale="0.4 0.4 0.4" geometry="primitive: plane; width: 4; height: 4;" material="side:double; shader: flat; color: {{currentCategory.color}};" show-detail="on: click;item:{{x.id}}"  >
                     <a-entity geometry="primitive: plane; width: 4; height: 4;" material="side: front">
                       <a-text color="white" align="center" color="black" value="{{x.titulo}}"  width="3.5" wrap-count="15" align="center"></a-text>
-                      {% if currentDetail.isDestacado %}
+                      {% if x.isDestacado %}
+                      <a-entity position="0 -1.33 0.2">
                     <!-- Using the asset management system. -->
-                     <a-image src="#start"></a-image>
+                         <a-entity geometry="primitive: plane" material="shader: flat; src: #start; width:1; height:1;"></a-entity>
+
+                    </a-entity>
                      {% endif %}
                      </a-entity>
                      <a-entity class="detail" position="0 0 -0.2" rotation="0 180 0" geometry="primitive: plane; width: 4; height: 4;" material="side: front">

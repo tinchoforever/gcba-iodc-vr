@@ -45,7 +45,7 @@ AFRAME.registerComponent('show-matrix', {
         d3.select(el).attr('class','item active');
         el.emit('move-now');
         animated =true;
-        
+        document.querySelector('a-entity.item.active .poster a-text').setAttribute('value','')
         window.game.datasetRowDetail(data.item,el);
       }
 
@@ -54,6 +54,7 @@ AFRAME.registerComponent('show-matrix', {
       // Create animation.
       animated =false;
       d3.select('a-entity.item.active detail').html('');
+      document.querySelector('a-entity.item.active .poster a-text').setAttribute('value',data.item);
       d3.selectAll('a-entity.item .detail').text('');
       d3.select(el).attr('class','item');
 
