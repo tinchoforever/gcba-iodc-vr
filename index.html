@@ -273,7 +273,7 @@
 
 
         <script id="rectangle-menu" type="text/x-nunjucks-template">
-            
+            {% set animationBaseMl = 200s %}
           <!--     <a-entity position="0 4 0" layout="type: circle; radius: 4; plane:xz;">
               {% for x in range(0,5) %}
                 <a-entity look-at="[camera]" template="src: #poster" data-src="#lobby" data-thumb="#{{currentCategory.key}}-thumb"></a-entity>
@@ -286,8 +286,8 @@
                 <a-entity>
                   <a-entity class="item" position="0 0 1" scale="0 0 0" geometry="primitive: plane; width: 4; height: 4;" material="side:double; shader: flat; color: {{currentCategory.color}};" show-detail="on: click;item:{{x.id}}"  >
                     <a-animation attribute="scale" 
-                        delay="{{loopIndex*400 + 400}}"
-                         dur="400"
+                        delay="{{loopIndex*animationBaseMl + animationBaseMl}}"
+                         dur="{{animationBaseMl}}"
                          begin="category-start"
                          from="0 0 0"
                          to="0.4 0.4 0.4"></a-animation>
@@ -331,8 +331,8 @@
                 <a-entity>
                   <a-entity class="item" position="0 0 1" scale="0 0 0" geometry="primitive: plane; width: 4; height: 4;" material="side:double; shader: flat; color: {{currentCategory.color}};" show-detail="on: click;item:{{x.id}}"   >
                      <a-animation attribute="scale" 
-                        delay="{{loopIndex*400 + 400}}"
-                         dur="400"
+                        delay="{{loopIndex*animationBaseMl + animationBaseMl}}"
+                         dur="{{animationBaseMl}}"
                          begin="category-start"
                          from="0 0 0"
                          to="0.4 0.4 0.4"></a-animation>
