@@ -4,7 +4,7 @@
 var env = new nunjucks.Environment();
 
 var random = Math.random();
-var socket = io("http://localhost:3000");
+var socket = io("https://iodc-map.herokuapp.com");
 
       
    

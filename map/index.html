@@ -37,8 +37,7 @@
           var socket = io('https://iodc-map.herokuapp.com');
           socket.on('user move', function(msg){
             users.push(msg);
-            console.log(msg); 
-            updateCiudades();
+          
           });
         });
 
@@ -83,50 +82,6 @@ var svg, origin, gpsLayer, gps, timeTrans = 1000,circles;
 
   
           updateCiudades();
-
-           setTimeout(function() {          // para probar que pasa cuando actualiza
-                users[0].pcia="urbanismo"; //
-                users[1].idCity=108; //
-                users[2].idCity=206; //cambia de ciudad
-                users[2].pcia=0; //anula pcia
-                users.push( {
-                          idCity : 0,
-                          level : 1,
-                          pcia: 0
-                        }
-                        );
-                updateCiudades();
-              }, 2000);
-
- setTimeout(function() {          // para probar que pasa cuando actualiza
-                users[0].idCity=68; //
-                users[0].pcia=0; //
-                users[1].idCity=25; //
-                users[2].idCity=38; //cambia de ciudad
-                users[3].idCity=109;
-                users.push( {
-                          idCity : 0,
-                          level : 1,
-                          pcia: 0
-                        }
-                        );
-                updateCiudades();
-              }, 5000);
-      
-
-
- setTimeout(function() {          // para probar que pasa cuando actualiza
-                users[1].idCity=25; //
-                users[2].idCity=0; 
-                users[2].pcia="obras"; 
-
-                users[3].idCity=39;
-                 users[4].idCity=12;
-
-                updateCiudades();
-              }, 7000);
-      
-
 
       }
 
