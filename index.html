@@ -77,7 +77,6 @@
 
  
         <script id="dataset-detail-menu" type="text/x-nunjucks-template">
-          
             <a-entity layout="type: box;align:start; columns:1;reverse:true; margin: 0.6; plane:xy;" position="0 -1.5 0">
                 <a-text color="black" value="{{currentDetail.titulo}}" width="4" word-wrap="30" align="center"></a-text>
 
@@ -108,7 +107,7 @@
                   {% endif %}
 
                 </a-entity>
-         
+        
         </script>
 
         <script id="row-detail" type="text/x-nunjucks-template">
@@ -300,15 +299,7 @@
                     </a-entity>
                      {% endif %}
                      </a-entity>
-                     <a-entity class="detail" position="0 0 -0.3" rotation="0 180 0" geometry="primitive: plane; width: 4; height: 4;" material="opacity:1;shader:flat;color:black" visible="true" >
-                      <a-entity position="0 0 0.22" go-to-{{currentDetail.destacado}}="on: click;item:{{x.id}}"
-                      event-set__1="_event: mousedown; scale: 1 1 1"
-                      event-set__2="_event: mouseup; scale: 1.2 1.2 1"
-                      event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
-                      event-set__4="_event: mouseleave; scale: 1 1 1" geometry="primitive: plane; width: 3; height: 0.5;" material="shader: flat; color: {{currentCategory.color}}" 
-                  sound="on: click; src: #click-sound"
-                  position="0 0 0" color="white" text="value: Explora una muestra; align:center">
-                      </a-entity>
+                     <a-entity class="detail" position="0 0 -0.3" rotation="0 180 0" geometry="primitive: plane; width: 4; height: 4;" material="opacity:1;shader:flat;color:white" visible="true" >
                      </a-entity>
                   </a-entity>
                 </a-entity>
