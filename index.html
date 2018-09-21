@@ -261,6 +261,7 @@
             <a-entity look-at="[camera]" layout="type: box; columns:1; margin: ; plane:xy;">
                 <a-entity>
                   <a-entity class="item" position="0 0 1" scale="0 0 0" geometry="primitive: plane; width: 4; height: 4;" material="side:double; shader: flat; color: {{currentCategory.color}};" show-detail="on: click;item:{{x.id}}"  >
+                    
                     <a-animation attribute="scale" 
                         delay="{{loopIndex*(animationBaseMl-220) + animationBaseMl-220}}"
                          dur="{{animationBaseMl}}"
