@@ -134,7 +134,7 @@ window.game = {
 	},
 	renderMatrix:function(datasetKey){
 
-		var currentDetail = window.metadata.datasets.filter(function(c){
+		window.game.currentDetail = window.metadata.datasets.filter(function(c){
 			return c.id == datasetKey;
 		})[0];
 		d3.csv('data/' +window.game.currentDetail.source, function(c){
