@@ -113,7 +113,7 @@
         </script>
 
         <script id="row-detail" type="text/x-nunjucks-template">
-          <a-entity geometry="primitive: plane; width: 4; height: 4;" material="shader: flat; color: white">
+          <a-entity geometry="primitive: plane; width: 4; height: 4;" material="shader: flat; color: transparent">
             <a-entity layout="type: box;align:end; columns:2;reverse:true; margin: 0.275; plane:xy;" position="-0.75 -1.75 0">
                 {% for x in currentDetailRowDetail %}
                 <a-text color="white" value="{{x.value}}" width="2.65" word-wrap="30" align="left"></a-text>
@@ -301,7 +301,7 @@
                     </a-entity>
                      {% endif %}
                      </a-entity>
-                     <a-entity class="detail" position="0 0 0" rotation="0 180 0" geometry="primitive: plane; width: 4; height: 4;" material="side:double; shader: flat;">
+                     <a-entity class="detail" position="0 0 -0.2" rotation="0 180 0" geometry="primitive: plane; width: 4; height: 4;" material="side:double; shader: flat;">
                      </a-entity>
                   </a-entity>
                 </a-entity>
