@@ -75,14 +75,14 @@ AFRAME.registerComponent('show-detail', {
         el.emit('move-now');
         animated =true;
         
-        window.game.renderDetail(data.item); 
+        // window.game.renderDetail(data.item); 
       }
 
     });
     el.addEventListener('move-out', function () {
       // Create animation.
       animated =false;
-      d3.select('a-entity.item.active detail').html('');
+      // d3.select('a-entity.item.active detail').html('');
       d3.select(el).attr('class','item');
 
     });
