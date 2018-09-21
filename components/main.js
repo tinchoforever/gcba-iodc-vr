@@ -101,8 +101,14 @@ window.game = {
 
 
 	},
-	renderTrip: function(){
+	renderTrip: function(datasetKey){
+		var currentDetail = window.metadata.datasets.filter(function(c){
+			return c.id == datasetKey;
+		})[0];
 
+		env.addGlobal('currentDetail',currentDetail);
+		window.game.currentDetail = currentDetail;
+		
 	
       d3.csv('data/' +window.game.currentDetail.source, function(c){
 			

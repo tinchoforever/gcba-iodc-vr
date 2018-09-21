@@ -164,7 +164,7 @@
 
                
             </a-entity>
-            <a-sky radius="60" src="images/360-detail/{{currentDetail.code}}/{{row.imagen}}" color="white" opacity="1">
+            <a-sky radius="10" src="images/360-detail/{{currentDetail.code}}/{{row.imagen}}" color="white" opacity="1">
                <a-animation attribute="opacity" 
                 delay="{{(loopIndex+1)*10000}}"
                  dur="10000"
@@ -209,7 +209,7 @@
               {% endfor %}
               
             </a-entity>
-             <a-sky radius="60" src="images/360-detail/{{currentDetail.code}}/{{row.imagen}}" color="white" opacity="0">
+             <a-sky radius="10" src="images/360-detail/{{currentDetail.code}}/{{row.imagen}}" color="white" opacity="0">
               <a-animation attribute="opacity" 
                 delay="{{loopIndex*10000}}"
                  dur="10000"
@@ -433,7 +433,7 @@
 
 
       <!-- 360-degree image. -->
-      <a-sky id="image-360" rotation="0 14 0" radius="60" src="#lobby" color="white"></a-sky>
+      <a-sky id="image-360" rotation="0 14 0" radius="50" src="#lobby" color="white"></a-sky>
       <!-- Miradas Logo -->
        <a-entity  id="circle-floor" 
        go-to-lobby="on: click; target: #image-360; src: #lobby;"
