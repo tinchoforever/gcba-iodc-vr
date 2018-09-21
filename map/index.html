@@ -37,7 +37,7 @@
           var socket = io('https://iodc-map.herokuapp.com');
           socket.on('user move', function(msg){
             users.push(msg);
-          
+            updateCiudades();
           });
         });
 
