@@ -75,7 +75,7 @@ AFRAME.registerComponent('show-detail', {
         el.emit('move-now');
         animated =true;
         
-        window.game.renderDetail(data.item);
+        window.game.renderDetail(data.item); 
       }
 
     });
