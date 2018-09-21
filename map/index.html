@@ -33,17 +33,32 @@
       var width = chartDiv.clientWidth;
       var height = chartDiv.clientHeight;
 
+
        $(function () {
           var socket = io('https://iodc-map.herokuapp.com');
           socket.on('user move', function(msg){
-            users.push(msg);
-            updateCiudades();  
+            updateViz(msg)
           });
         });
 
       //Esta es la base de los usuarios activos
       var users = [];
 
+var updateViz = function(userMove){
+        var found = false;
+            users.map(function(user){
+              if (user.userId== userMove.userId){
+                user.idCity = userMove.idCity;
+                user.pcia = userMove.pcia;
+                user.level = userMove.level;
+                found = true;
+              }
+            });
+            if (!found){
+              users.push(userMove);
+            }
+            updateCiudades();  
+};
 var svg, origin, gpsLayer, gps, timeTrans = 1000,circles;
 
     d3.queue()
