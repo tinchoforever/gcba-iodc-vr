@@ -31,7 +31,7 @@ AFRAME.registerComponent('show-matrix', {
         property: 'position',
         startEvents: 'move-out',
         dir: 'alternate',
-        dur: 300,
+        dur: 200,
         from: '0 0 3.5',
         to: '0 0 1'
       });
@@ -40,22 +40,27 @@ AFRAME.registerComponent('show-matrix', {
       // Create animation.
 
       if (!animated){
+        d3.selectAll('a-entity.item.active .detail').dispatch('move-out');
         d3.selectAll('a-entity.item.active').dispatch('move-out');
+
 
         d3.select(el).attr('class','item active');
         el.emit('move-now');
+        d3.selectAll('a-entity.item.active .detail').dispatch('move-now');
+        
+
         animated =true;
         document.querySelector('a-entity.item.active .poster a-text').setAttribute('value','')
-        window.game.datasetRowDetail(data.item,el);
+        
       }
 
     });
     el.addEventListener('move-out', function () {
       // Create animation.
       animated =false;
-      d3.select('a-entity.item.active detail').html('');
+      
       document.querySelector('a-entity.item.active .poster a-text').setAttribute('value',data.item);
-      d3.selectAll('a-entity.item .detail').text('');
+      
       d3.select(el).attr('class','item');
 
     });

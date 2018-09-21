@@ -140,7 +140,17 @@ window.game = {
 		d3.csv('data/' +window.game.currentDetail.source, function(c){
 			
 			c.map(function(d,i){
-				d.index = i
+				
+				var result = [];
+			    for( var property in d) {
+			        var obj = {
+			        	key:property,
+			        	value: d[property]
+			        }
+			        result.push( obj ); 
+			    }
+			    d.result = result;
+			    d.index = i
 			});
 			
 			var cArray = [];
@@ -171,14 +181,7 @@ window.game = {
 		var currentDetail = window.game.currentItemDataSet.filter(function(c){
 			return c.index == parseInt(datasetKey);
 		})[0];
-		var result = [];
-		    for( var property in currentDetail) {
-		        var obj = {
-		        	key:property,
-		        	value: currentDetail[property]
-		        }
-		        result.push( obj ); 
-		    }
+		
     
 		
 

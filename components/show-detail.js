@@ -82,7 +82,7 @@ AFRAME.registerComponent('show-detail', {
     el.addEventListener('move-out', function () {
       // Create animation.
       animated =false;
-      // d3.select('a-entity.item.active detail').html('');
+      
       d3.select(el).attr('class','item');
 
     });

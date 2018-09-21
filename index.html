@@ -81,14 +81,7 @@
         </script>
 
         <script id="row-detail" type="text/x-nunjucks-template">
-            <a-entity layout="type: box;align:end; columns:2;reverse:true; margin: 0.275; plane:xy;" position="-0.75 -1.75 0">
-                {% for x in currentDetailRowDetail %}
-                <a-text color="white" value="{{x.value}}" width="2.65" word-wrap="30" align="left"></a-text>
-                <a-text color="white" value="{{x.key}}" width="3" word-wrap="35" align="right"></a-text>
-                {% endfor %}
-                <a-entity>
-              </a-entity>
-          </a-entity>
+            
         </script>
         
         <script id="trip-menu" type="text/x-nunjucks-template">
@@ -224,8 +217,19 @@
                     <a-entity class="poster" geometry="primitive: plane; width: 4; height: 4;" material="side: front">
                       <a-text class="label" color="white" align="center" color="black" value="{{x.index}}"  width="3.5" wrap-count="15" align="center"></a-text>
                      </a-entity>
-                    <a-entity class="detail" geometry="primitive: plane; width: 4; height: 4;" material="side: front">
-                      
+                    <a-entity class="detail" geometry="primitive: plane; width: 4; height: 4;" opacity="0" visible="false" material="side: front"
+                      animation__fade_3="property:opacity;startEvents: move-now;dir: alternate;dur: 600;from:0;to:1;" 
+                      animation__fade_4="property:visible;startEvents: move-now;dir: alternate;dur: 1;from:false;to:true;"
+                      animation__fade_out="property:opacity;startEvents: move-out;dir: alternate;dur: 600;from:1;to:0;" 
+                      animation__fade_out1="property:visible;startEvents: move-out;dir: alternate;dur: 1;from:true;to:false;" >
+                      <a-entity layout="type: box;align:end; columns:2;reverse:true; margin: 0.275; plane:xy;" position="-0.75 -1.75 0">
+                          {% for z in x.result %}
+                          <a-text color="white" value="{{z.value}}" width="2.65" word-wrap="30" align="left"></a-text>
+                          <a-text color="white" value="{{z.key}}" width="3" word-wrap="35" align="right"></a-text>
+                          {% endfor %}
+                          <a-entity>
+                        </a-entity>
+                    </a-entity>
                      </a-entity>
                   </a-entity>
                 </a-entity>
