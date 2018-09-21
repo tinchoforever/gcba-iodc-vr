@@ -250,7 +250,7 @@ window.game = {
 		
 		entityInnerEl.setAttribute('id', 'category-inner');
 		entityInnerEl.setAttribute('do-rectangle-once-loaded', '');
-		
+		 
 		categoryEl.appendChild(entityInnerEl);
 		//Setup Lobby
 	  	document.getElementById('category-inner').setAttribute('visible',true);
