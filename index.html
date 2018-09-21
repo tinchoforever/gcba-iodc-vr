@@ -77,35 +77,13 @@
 
  
         <script id="dataset-detail-menu" type="text/x-nunjucks-template">
-            <a-entity layout="type: box;align:start; columns:1;reverse:true; margin: 0.6; plane:xy;" position="0 -1.5 0">
-                <a-text color="black" value="{{currentDetail.titulo}}" width="4" word-wrap="30" align="center"></a-text>
-
-                   <a-text color="black" value="{{currentDetail.descripcion}}" width="3.5" wrap-count="40" align="center"></a-text>
-              <a-text color="black" value="{{currentDetail.tamanio}} filas" align="center"></a-text>
-                <a-text color="black" value="{{currentDetail.frecuencia}}" align="center"></a-text>
-                
-                <a-text color="black" width="4" value="{{currentDetail.autoridad}}" align="center"></a-text>
-               
-                <a-entity>
-                   
-                    <!-- Trip  -->
-                  {% if currentDetail.isDestacado %}
-
-                  <a-entity position="0 0 0.22" go-to-{{currentDetail.destacado}}="on: click;item:{{currentDetail.id}}"
+           <a-entity position="0 0 0.22" go-to-{{currentDetail.destacado}}="on: click;item:{{currentDetail.id}};"
                       event-set__1="_event: mousedown; scale: 1 1 1"
                       event-set__2="_event: mouseup; scale: 1.2 1.2 1"
                       event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
                       event-set__4="_event: mouseleave; scale: 1 1 1" geometry="primitive: plane; width: 3; height: 0.5;" material="shader: flat; color: {{currentCategory.color}}" 
                   sound="on: click; src: #click-sound"
                   position="0 0 0" color="white" text="value: Explora una muestra; align:center">
-                  </a-entity>
-                  {% else %}
-                   <a-entity position="0 0 0.22"
-                      geometry="primitive: plane; width: 3; height: 0.5;" material="shader: flat;" 
-                      position="0 0 0" text="color:{{currentCategory.color}};value:Busca otro dataset para explorar; align:center">
-                      </a-entity>
-                  {% endif %}
-
                 </a-entity>
         
         </script>
@@ -304,14 +282,7 @@
                      {% endif %}
                      </a-entity>
                      <a-entity class="detail" position="0 0 -0.3" rotation="0 180 0" geometry="primitive: plane; width: 4; height: 4;" material="opacity:1;shader:flat;color:black" visible="true" >
-                       <a-entity position="0 0 0.22" go-to-{{x.destacado}}="on: click;item:{{x.id}};"
-                      event-set__1="_event: mousedown; scale: 1 1 1"
-                      event-set__2="_event: mouseup; scale: 1.2 1.2 1"
-                      event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
-                      event-set__4="_event: mouseleave; scale: 1 1 1" geometry="primitive: plane; width: 3; height: 0.5;" material="shader: flat; color: {{currentCategory.color}}" 
-                  sound="on: click; src: #click-sound"
-                  position="0 0 0" color="white" text="value: Explora una muestra; align:center">
-                </a-entity>
+                       
                      </a-entity>
                   </a-entity>
                 </a-entity>
