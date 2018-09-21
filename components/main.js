@@ -2,7 +2,12 @@
  window.moves = [];
 //setglobal Nunjuncls env
 var env = new nunjucks.Environment();
-  	
+
+var random = Math.random();
+var socket = io("http://localhost:3000");
+
+      
+   
 	
 //Load info from datasets.
 window.metadata = {
@@ -130,6 +135,15 @@ window.game = {
 			      entityInnerEl.setAttribute('do-trip-once-loaded', '');
 			      
 			      detailInner.appendChild(entityInnerEl);
+			     socket.emit('user move', {
+					userId: random,
+					idCity : parseInt(currentDetail.id),  //id de la ciudad si esta en nivel ciudad
+					 // nivel 1> lobby central - 
+					 // nivel 2> lobby categoria - 
+					 // nivel 3> dataset
+		            level : 3,
+		            pcia: currentCategory.key,
+				});
 		  });
 	},
 	renderMatrix:function(datasetKey){
@@ -137,6 +151,7 @@ window.game = {
 		window.game.currentDetail = window.metadata.datasets.filter(function(c){
 			return c.id == datasetKey;
 		})[0];
+		
 		d3.csv('data/' +window.game.currentDetail.source, function(c){
 			
 			c.map(function(d,i){
@@ -173,6 +188,15 @@ window.game = {
 		      entityInnerEl.setAttribute('do-matrix-once-loaded', '');
 		      
 		      detailInner.appendChild(entityInnerEl);
+		      socket.emit('user move', {
+					userId: random,
+					idCity : window.game.currentDetail.id,  //id de la ciudad si esta en nivel ciudad
+					 // nivel 1> lobby central - 
+					 // nivel 2> lobby categoria - 
+					 // nivel 3> dataset
+		            level : 3,
+		            pcia: window.game.currentCategory.key
+				});
 		  });
       
   	},
@@ -212,16 +236,15 @@ window.game = {
 
 	  	nunjucks.currentDetail = currentDetail;
 
-	  	var detailEl = document.querySelector('a-entity.item.active .detail');
-	  	detailEl.innerHTML = '';
-		var detailInnerEl = document.createElement('a-entity');
-		
-		detailInnerEl.setAttribute('id', 'detail-inner');
-		detailInnerEl.setAttribute('do-popup-once-loaded', '');
-		
-		detailEl.append(detailInnerEl);
-		//Setup Lobby
-	  	
+	  	socket.emit('user move', {
+					userId: random,
+					idCity : parseInt(datasetKey),  //id de la ciudad si esta en nivel ciudad
+					 // nivel 1> lobby central - 
+					 // nivel 2> lobby categoria - 
+					 // nivel 3> dataset
+		            level : 3,
+		            pcia: window.game.currentCategory.key,
+				});
 
 	},
 	reRenderLobby:function(){
@@ -238,7 +261,7 @@ window.game = {
 	},	
 	renderCategory: function(categoryKey){
 		
-		var currentCategory = categories.filter(function(c){
+		var currentCategory = window.game.currentCategory = categories.filter(function(c){
 			return c.key == categoryKey;
 		})[0];
 
@@ -250,6 +273,15 @@ window.game = {
 			currentCategory.secondGroup = currentCategory.values.slice(middle +1,l-1);
 		}
 
+		socket.emit('user move', {
+			userId: random,
+			idCity : 0,  //id de la ciudad si esta en nivel ciudad
+			 // nivel 1> lobby central - 
+			 // nivel 2> lobby categoria - 
+			 // nivel 3> dataset
+            level : 2,
+            pcia: currentCategory.key
+		});
 
 		env.addGlobal('currentCategory',currentCategory);
 	  	nunjucks.currentCategory = currentCategory;
@@ -335,7 +367,15 @@ AFRAME.registerComponent('do-row-detail-once-loaded', {
 		  		src:'#circle-menu'
 		  	});
 		  	document.getElementById('circle-floor').setAttribute('material', 'src', '');
-
+		  	socket.emit('user move', {
+				userId: random,
+				idCity : 0,  //id de la ciudad si esta en nivel ciudad
+				 // nivel 1> lobby central - 
+				 // nivel 2> lobby categoria - 
+				 // nivel 3> dataset
+	            level : 1,
+	            pcia: 0
+			});
 		  }
 		});
 function toTitleCase(str) {

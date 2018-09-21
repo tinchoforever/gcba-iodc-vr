@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>IODC MAP</title>
+    <script src="//d3js.org/d3.v4.min.js" charset="utf-8"></script>
+    <script src="https://iodc-map.herokuapp.com/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <style>
+
+      /* Make the chart container fill the page using CSS. */
+      #chart {
+        position: fixed;
+        left: 0px;
+        right: 0px;
+        top: 0px;
+        bottom: 0px;
+      }
+
+      .gps{
+        stroke:black;
+        fill:red;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div id="vis"></div>
+
+    <script>
+      // Extract the width and height that was computed by CSS.
+      var chartDiv = document.getElementById("vis");
+      var width = chartDiv.clientWidth;
+      var height = chartDiv.clientHeight;
+
+       $(function () {
+          var socket = io('https://iodc-map.herokuapp.com');
+          socket.on('user move', function(msg){
+            users.push(msg);
+            console.log(msg);
+            updateCiudades();
+          });
+        });
+
+      //Esta es la base de los usuarios activos
+      var users = [];
+
+var svg, origin, gpsLayer, gps, timeTrans = 1000,circles;
+
+    d3.queue()
+          .defer(d3.xml, "mapa-arranged-full-notext3.svg")
+          // .defer(function () {
+          //   d3.xml("mapa-arranged-full-notext3.svg").mimeType("image/svg+xml").get(function(xml) {
+          //       var importedNode = document.importNode(xml.documentElement, true);
+          //       d3.select("div#vis")
+          //         .each(function() {
+          //           this.appendChild(importedNode);
+          //         })
+          //       });
+          // })
+          .defer(d3.csv, "metadatos.csv")
+          .awaitAll(dibuja);
+
+      
+
+      function dibuja (error, results) {
+
+          // IMPORTA EL SVG AL DOM
+          var importedNode = document.importNode(results[0].documentElement, true);
+                d3.select("div#vis")
+                  .each(function() {
+                    this.appendChild(importedNode);
+                  })
+
+
+        datos = results[1];
+
+        svg = d3.select('svg');
+
+        origin = svg.select("#centro");
+
+        gpsLayer = svg.select("#ciudades").append("g").attr("id","gpsLayer");
+
+  
+          updateCiudades();
+
+           setTimeout(function() {          // para probar que pasa cuando actualiza
+                users[0].pcia="urbanismo"; //
+                users[1].idCity=108; //
+                users[2].idCity=206; //cambia de ciudad
+                users[2].pcia=0; //anula pcia
+                users.push( {
+                          idCity : 0,
+                          level : 1,
+                          pcia: 0
+                        }
+                        );
+                updateCiudades();
+              }, 2000);
+
+ setTimeout(function() {          // para probar que pasa cuando actualiza
+                users[0].idCity=68; //
+                users[0].pcia=0; //
+                users[1].idCity=25; //
+                users[2].idCity=38; //cambia de ciudad
+                users[3].idCity=109;
+                users.push( {
+                          idCity : 0,
+                          level : 1,
+                          pcia: 0
+                        }
+                        );
+                updateCiudades();
+              }, 5000);
+      
+
+
+ setTimeout(function() {          // para probar que pasa cuando actualiza
+                users[1].idCity=25; //
+                users[2].idCity=0; 
+                users[2].pcia="obras"; 
+
+                users[3].idCity=39;
+                 users[4].idCity=12;
+
+                updateCiudades();
+              }, 7000);
+      
+
+
+      }
+
+
+
+
+          function updateCiudades(){
+                    var gps = gpsLayer.selectAll("g")
+                          .data(users);
+
+
+                    gps.enter()
+                          .append("g")
+                          .attr("transform", function(d){
+                                        return svg.select('[id="CENTRO"]').attr("transform");
+                          })
+                          .append("circle")
+                          .attr("r",0)
+                          .attr("class","gps")
+                          .transition().duration(300).attr("r",5)
+                          ;
+
+                    gps.transition()
+                        .duration(timeTrans)
+                        .attr("transform", function(d,k){
+                            if (d.idCity) return svg.select('[id="'+d.idCity+'"]').attr("transform");
+                            if (d.pcia) return "translate(100,"+( 100 + k*100) + ')';
+                            return svg.select('[id="CENTRO"]').attr("transform");
+
+                          });
+              }
+      
+    </script>
+  </body>
+</html>
