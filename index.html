@@ -50,6 +50,7 @@
          <img id="movilidad-sphere" crossorigin="anonymous" src="stories/01/eternauta/02-01-devoto-4.jpg">
          <img id="actividad_economica-sphere" crossorigin="anonymous" src="stories/01/santelmo/img/bgEscena1.jpg">
           
+
         <img id="lobby" crossorigin="anonymous" src="images/lobby/00.png">
 
 
@@ -76,6 +77,10 @@
         <img id="seguridad-base" crossorigin="anonymous" src="images/base/seguridad-base.png">
 
         <img id="start" src="images/destacado.png">
+        <img id="icono-archivo" src="images/iconos/archivo.png">
+        <img id="icono-bici" src="images/iconos/bici.png">
+        <img id="icono-subte" src="images/iconos/subte.png">
+        <img id="icono-tramite" src="images/iconos/tramite.png">
 
  
         <script id="dataset-detail-menu" type="text/x-nunjucks-template">
@@ -123,7 +128,7 @@
 
                
             </a-entity>
-            <a-sky radius="10" src="images/360-detail/{{currentDetail.code}}/{{row.imagen}}" color="white" opacity="1">
+            <a-sky radius="6" src="images/360-detail/{{currentDetail.code}}/{{row.imagen}}" color="white" opacity="1">
                <a-animation attribute="opacity" 
                 delay="{{(loopIndex+1)*10000}}"
                  dur="10000"
@@ -168,7 +173,7 @@
               {% endfor %}
               
             </a-entity>
-             <a-sky radius="10" src="images/360-detail/{{currentDetail.code}}/{{row.imagen}}" color="white" opacity="0" visible="false">
+             <a-sky radius="6" src="images/360-detail/{{currentDetail.code}}/{{row.imagen}}" color="white" opacity="0" visible="false">
               <a-animation attribute="visible" 
                  begin="{{loopIndex*10000}}"
                  dur="1"
@@ -199,25 +204,24 @@
 
 
         <script id="dataset-menu" type="text/x-nunjucks-template">
-           <!--  <a-entity position="0 4 0" layout="type: circle; radius: 4; plane:xz;">
-              {% for x in range(0,5) %}
-                <a-entity look-at="[camera]" template="src: #poster" data-src="#lobby" data-thumb="#{{currentCategory.key}}-thumb"></a-entity>
-               {% endfor %}
-          </a-entity> -->
         {% for item in matrixArray %} 
         {% set loopIndex = loop.index0 %}
 
-        <a-entity position="0 {{(loopIndex*0.5 + 1) -1.5}} 0" layout="type: circle; radius: 4; plane:xz;">
+        <a-entity position="0 {{(loopIndex*0.5 + 1) -1.5}} 0" 
+        layout="type: circle; radius: 4; plane:xz;">
           {% for x in item %}
        
-          <a-entity look-at="[camera]" geometry="primitive: plane; height: 0.2; width: 0.8" material="side: double">
-              <a-entity>
+          
+              <a-entity look-at="[camera]">
                   <a-entity class="item" position="0 0 1" scale="0.15 0.15 0.15" geometry="primitive: plane; width: 4; height: 4;" material="side:double; shader: flat; color: {{currentCategory.color}};" show-matrix="on: click;item:{{x.index}}"  event-set__1="_event: mousedown; position: 0 0 1"
                       event-set__2="_event: mouseup; position: 0 0 2"
                       event-set__3="_event: mouseenter; position: 0 0 2"
                       event-set__4="_event: mouseleave; position: 0 0 1">
                     <a-entity class="poster" geometry="primitive: plane; width: 4; height: 4;" material="side: front">
-                      <a-text class="label" color="white" align="center" color="black" value="{{x.index}}"  width="3.5" wrap-count="15" align="center"></a-text>
+                       <a-entity position="0 0 1">
+                    <!-- Using the asset management system. -->
+                         <a-entity class="label" geometry="primitive: plane" material="shader: flat;transparent:true; src: #icono-{{currentDetail.icono}}; width:4; height:4;"></a-entity>
+                    </a-entity>
                      </a-entity>
                     <a-entity class="detail" geometry="primitive: plane; width: 4; height: 4;" opacity="0" visible="false" material="side: front"
                       animation__fade_3="property:opacity;startEvents: move-now;dir: alternate;dur: 600;from:0;to:1;" 
@@ -235,13 +239,6 @@
                      </a-entity>
                   </a-entity>
                 </a-entity>
-                <a-entity>
-                  <a-entity layout="type: box;align:start; columns:1;reverse:true; margin: 0.6; plane:xy;">
-                    <a-entity material="side:double; shader: flat; color: white" >
-                  </a-entity>
-                </a-entity>
-              </a-entity>
-          </a-entity>
           {% endfor %}
         </a-entity>
         {% endfor %}
@@ -437,7 +434,8 @@
         <a-entity layout="type: circle; radius: 6; plane:xz;" position="0 10 0">
             
             {% for x in categories %}
-               <a-entity look-at="[camera]" template="src: #link" data-src="#{{x.key}}-sphere" data-link="{{x.key}}" data-thumb="#{{x.key}}-thumb" data-percentage="{{x.percentage}}" data-count="{{x.values.length}}" data-rows="{{x.rowsLabel}}"></a-entity>
+               <a-entity look-at="[camera]" template="src: #link" data-src="#{{x.key}}-sphere" data-link="{{x.key}}" data-thumb="#{{x.key}}-thumb" data-percentage="{{x.percentage}}" 
+               data-destacados="{{x.destacados}}" data-count="{{x.values.length}}" data-rows="{{x.rowsLabel}}"></a-entity>
             {% endfor %}
             <a-animation attribute="position" 
                          begin="1000"
@@ -493,13 +491,18 @@
             <a-entity look-at="[camera]" position="0.012676036232893928 -1.513 0.00863929409054304" geometry="primitive: plane; width: 2; height: 0.35;" material="shader: flat; color: white">
               <a-text mixin="font-chalet" color="black" value="{{rows}} filas" align="center" width="4" ></a-text>
             </a-entity>
+            {% if destacados > 0 %}
+            <a-entity look-at="[camera]" position="0.012676036232893928 -1.903 0.00863929409054304" geometry="primitive: plane; width: 2; height: 0.35;" material="shader: flat; color: white">
+              <a-text mixin="font-chalet" color="black" value="Tiene datasets destacados" filas" align="center" width="3" ></a-text>
+            </a-entity>
+            {% endif %}
           <!-- </a-entity> -->
         </script>
       </a-assets>
 
 
       <!-- 360-degree image. -->
-      <a-sky id="image-360" rotation="0 14 0" radius="50" src="#lobby" color="white"></a-sky>
+      <a-sky id="image-360" rotation="0 14 0" radius="10" src="#lobby" color="white"></a-sky>
       <!-- Miradas Logo -->
        <a-entity  id="circle-floor" 
        go-to-lobby="on: click; target: #image-360; src: #lobby;"

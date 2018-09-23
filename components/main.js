@@ -44,6 +44,14 @@ cacheImg.push("obras/25095-a.png");
 cacheImg.push("obras/25095-d.png");
 cacheImg.push("obras/25130-a.png");
 cacheImg.push("obras/25130-d.png");
+cacheImg.push("obras/25130-d.png");
+cacheImg.push("espacios-verdes/01.png");
+cacheImg.push("espacios-verdes/02.png");
+cacheImg.push("espacios-verdes/03.png");
+cacheImg.push("espacios-verdes/04.png");
+cacheImg.push("espacios-verdes/05.png");
+cacheImg.push("espacios-verdes/06.png");
+
 cacheImg.map(function(m){
 	var img=new Image();
 	img.src='images/360-detail/' + m;
@@ -106,11 +114,24 @@ window.game = {
 		    	console.log(d.color, d.key);
 		    	d.rows = 0;
 		    	d.title = d.key.toUpperCase();
+	    		d.destacados = 0;
 		    	d.values.map(function(v){
 		    		d.rows += parseInt(v.tamanio);
+		    		if (v.isDestacado){
+		    			d.destacados += 1;
+		    		};
+		    	});
+		    
+		    	d.values.map(function(v){
+
 		    	});
 		    	d.percentage = Math.round(d.rows * 100 /total,2);
-		    	d.rowsLabel = Math.round(d.rows/100000) + " millones"
+		    	var rowCount = Math.round(d.rows/100000);
+		    	d.rowsLabel = rowCount + " millones"
+		    	if (rowCount == 1 ){
+		    		d.rowsLabel = rowCount + " millón"
+		    	}
+		    	
 		    });
 	   		 env.addGlobal('categories',categories);
 	  		 nunjucks.categories = categories;

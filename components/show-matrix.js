@@ -50,7 +50,8 @@ AFRAME.registerComponent('show-matrix', {
         
 
         animated =true;
-        document.querySelector('a-entity.item.active .poster a-text').setAttribute('value','')
+        document.querySelector('a-entity.item.active .poster .label').setAttribute('material','opacity',0);
+        document.querySelector('a-entity.item.active .poster .label').setAttribute('visible','false');
         
       }
 
@@ -59,7 +60,8 @@ AFRAME.registerComponent('show-matrix', {
       // Create animation.
       animated =false;
       
-      document.querySelector('a-entity.item.active .poster a-text').setAttribute('value',data.item);
+      document.querySelector('a-entity.item.active .poster .label').setAttribute('material','opacity',1);
+      document.querySelector('a-entity.item.active .poster .label').setAttribute('visible','true');
       
       d3.select(el).attr('class','item');
 
