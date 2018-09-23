@@ -28,11 +28,6 @@ colores["salud"] = "#2DBC98";
 colores["seguridad"] = "#0289D1";
 colores["urbanismo"] = "#9D6DB6";
 
-// function preloadImage()
-// {
-
-//     
-// }
 
 d3.selectAll('a-assets img')._groups[0].forEach(function(e){ 
 	
