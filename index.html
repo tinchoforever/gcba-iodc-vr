@@ -262,7 +262,11 @@
             {% set loopIndex = loop.index0 %}
             <a-entity look-at="[camera]" layout="type: box; columns:1; margin: ; plane:xy;">
                 <a-entity>
-                  <a-entity class="item" position="0 0 1" scale="0 0 0" geometry="primitive: plane; width: 4; height: 4;" material="side:double; shader: flat; color: {{currentCategory.color}};" show-detail="on: click;item:{{x.id}}"  >
+                  <a-entity class="item" position="0 0 1" scale="0 0 0" geometry="primitive: plane; width: 4; height: 4;" material="side:front; shader: flat; color: {{currentCategory.color}};" show-detail="on: click;item:{{x.id}}" 
+                    event-set__1="_event: mousedown; scale: 0.4 0.4 0.4"
+                      event-set__2="_event: mouseup; scale: 0.6 0.6 0.6"
+                      event-set__3="_event: mouseenter; scale: 0.6 0.6 0.6"
+                      event-set__4="_event: mouseleave; scale: 0.4 0.4 0.4"  >
                     
                     <a-animation attribute="scale" 
                         delay="{{loopIndex*(animationBaseMl-220) + animationBaseMl-220}}"
@@ -280,7 +284,7 @@
                     </a-entity>
                      {% endif %}
                      </a-entity>
-                     <a-entity class="detail" position="0 0 -0.3" rotation="0 180 0" geometry="primitive: plane; width: 4; height: 4;" material="opacity:1;shader:flat;color:white" visible="true" >
+                     <a-entity class="detail" position="0 0 -0.3" rotation="0 180 0" geometry="primitive: plane; width: 4; height: 4;" material="side:front;opacity:1;shader:flat;color:white" visible="true" >
                        
  <a-entity layout="type: box;align:start; columns:1;reverse:true; margin: 0.6; plane:xy;" position="0 -1.5 0">
                 <a-text mixin="font-chalet" color="black" value="{{x.titulo}}" width="4" word-wrap="30" align="center"></a-text>
@@ -359,7 +363,7 @@
                          from="0 0 0"
                          to="0.4 0.4 0.4"></a-animation>
                     <a-entity geometry="primitive: plane; width: 4; height: 4;" material="side: front">
-                      <a-text color="white" align="center" color="black" value="{{x.titulo}}"  width="3.5" wrap-count="15" align="center"></a-text>
+                      <a-text  mixin="font-chalet" color="white" align="center" color="black" value="{{x.titulo}}"  width="3.5" wrap-count="15" align="center"></a-text>
                     
                      </a-entity>
                      <a-entity class="detail" position="0 0 -0.2" rotation="0 180 0" geometry="primitive: plane; width: 4; height: 4;" material="side: front;shader:flat;color:white">
@@ -367,13 +371,13 @@
                      
      
  <a-entity layout="type: box;align:start; columns:1;reverse:true; margin: 0.6; plane:xy;" position="0 -1.5 0">
-                <a-text color="black" value="{{x.titulo}}" width="4" word-wrap="30" align="center"></a-text>
+                <a-text  mixin="font-chalet" color="black" value="{{x.titulo}}" width="4" word-wrap="30" align="center"></a-text>
 
-                   <a-text color="black" value="{{x.descripcion}}" width="3.5" wrap-count="40" align="center"></a-text>
-              <a-text color="black" value="{{x.tamanio}} filas" align="center"></a-text>
-                <a-text color="black" value="{{x.frecuencia}}" align="center"></a-text>
+                   <a-text  mixin="font-chalet" color="black" value="{{x.descripcion}}" width="3.5" wrap-count="40" align="center"></a-text>
+              <a-text  mixin="font-chalet" color="black" value="{{x.tamanio}} filas" align="center"></a-text>
+                <a-text  mixin="font-chalet" color="black" value="{{x.frecuencia}}" align="center"></a-text>
                 
-                <a-text color="black" width="4" value="{{x.autoridad}}" align="center"></a-text>
+                <a-text  mixin="font-chalet" color="black" width="4" value="{{x.autoridad}}" align="center"></a-text>
                
                 <a-entity>
                    
@@ -430,12 +434,16 @@
 
      <!-- Image link template to be reused. -->
       <script id="circle-menu" type="text/x-nunjucks-template">
-        <a-entity layout="type: circle; radius: 6; plane:xz;">
+        <a-entity layout="type: circle; radius: 6; plane:xz;" position="0 10 0">
             
             {% for x in categories %}
                <a-entity look-at="[camera]" template="src: #link" data-src="#{{x.key}}-sphere" data-link="{{x.key}}" data-thumb="#{{x.key}}-thumb" data-percentage="{{x.percentage}}" data-count="{{x.values.length}}" data-rows="{{x.rowsLabel}}"></a-entity>
             {% endfor %}
-             
+            <a-animation attribute="position" 
+                         begin="1000"
+                         dur="2000"
+                         from="0 10 0"
+                         to="0 -10 0"></a-animation>
       </a-entity>
      
         </script>
@@ -480,10 +488,10 @@
                 </a-entity>
               </a-entity>
             <a-entity look-at="[camera]" position="0.012676036232893928 1.509007219788657 0.00863929409054304"  geometry="primitive: plane; width: 2; height: 0.35;" material="shader: flat; color: white">
-              <a-text mixin="font-chalet" color="black" value="{{count}} datasets" align="center" text=""></a-text>
+              <a-text mixin="font-chalet" color="black" value="{{count}} datasets" align="center" width="4" ></a-text>
             </a-entity>
             <a-entity look-at="[camera]" position="0.012676036232893928 -1.513 0.00863929409054304" geometry="primitive: plane; width: 2; height: 0.35;" material="shader: flat; color: white">
-              <a-text mixin="font-chalet" color="black" value="{{rows}} filas" align="center" text=""></a-text>
+              <a-text mixin="font-chalet" color="black" value="{{rows}} filas" align="center" width="4" ></a-text>
             </a-entity>
           <!-- </a-entity> -->
         </script>

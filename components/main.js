@@ -28,6 +28,18 @@ colores["salud"] = "#2DBC98";
 colores["seguridad"] = "#0289D1";
 colores["urbanismo"] = "#9D6DB6";
 
+// function preloadImage()
+// {
+
+//     
+// }
+
+d3.selectAll('a-assets img')._groups[0].forEach(function(e){ 
+	
+	var img=new Image();
+	img.src=d3.select(e).attr('src');
+});
+
 window.game = {
 	init:function(){
 		if (window.metadata.datasets.length ==0){
@@ -257,7 +269,7 @@ window.game = {
 		}
 		document.getElementById('detail-circle').innerHTML = "";
 		document.getElementById('lobby-inner').setAttribute('visible',true);
-
+		document.getElementById('circle-floor').setAttribute('material', 'src', '');
 	},	
 	renderCategory: function(categoryKey){
 		
