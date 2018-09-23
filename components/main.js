@@ -37,7 +37,7 @@ cacheImg.push("baset/13294.png");
 cacheImg.push("obras/58-a.png");
 cacheImg.push("obras/58-d.png");
 cacheImg.push("obras/96-a.png");
-cacheImg.push("obras/96-d.png");
+cacheImg.push("obras/96-d.png"); 
 cacheImg.push("obras/5100-a.png");
 cacheImg.push("obras/5100-d.png");
 cacheImg.push("obras/25095-a.png");
