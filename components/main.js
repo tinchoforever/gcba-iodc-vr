@@ -28,9 +28,28 @@ colores["salud"] = "#2DBC98";
 colores["seguridad"] = "#0289D1";
 colores["urbanismo"] = "#9D6DB6";
 
-
+var cacheImg = [];
+cacheImg.push("baset/547.png");
+cacheImg.push("baset/6084.png");
+cacheImg.push("baset/12327.png");
+cacheImg.push("baset/13225.png");
+cacheImg.push("baset/13294.png");
+cacheImg.push("obras/58-a.png");
+cacheImg.push("obras/58-d.png");
+cacheImg.push("obras/96-a.png");
+cacheImg.push("obras/96-d.png");
+cacheImg.push("obras/5100-a.png");
+cacheImg.push("obras/5100-d.png");
+cacheImg.push("obras/25095-a.png");
+cacheImg.push("obras/25095-d.png");
+cacheImg.push("obras/25130-a.png");
+cacheImg.push("obras/25130-d.png");
+cacheImg.map(function(m){
+	var img=new Image();
+	img.src='images/360-detail/' + m;
+});
 d3.selectAll('a-assets img')._groups[0].forEach(function(e){ 
-	
+
 	var img=new Image();
 	img.src=d3.select(e).attr('src');
 });
