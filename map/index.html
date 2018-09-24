@@ -111,7 +111,11 @@ var updateViz = function(userMove){
             }
             updateCiudades();  
 };
-var svg, origin, gpsLayer, gps, timeTrans = 1000,circles;
+var svg, origin, gpsLayer, gps, timeTrans = 1000,circles, centro;
+
+var hullsPolygons = {};
+
+var colorScale = d3.scaleOrdinal(d3.schemeCategory20);
 
     d3.queue()
           .defer(d3.xml, "mapa-arranged-full-notext3.svg")
@@ -134,43 +138,117 @@ var svg, origin, gpsLayer, gps, timeTrans = 1000,circles;
 
         svg = d3.select('svg');
 
-        origin = svg.select("#centro");
+
+       centro = svg.select('#CENTRO').attr("transform").slice(10,-1).split(",");
+       centro = [+centro[0],+centro[1]];
+
 
         gpsLayer = svg.select("#ciudades").append("g").attr("id","gpsLayer");
 
-  
-          updateCiudades();
+
+        
+
+
+        datos.forEach(function(d,k){
+              var trans = svg.select('[id="'+d.id+'"]').attr("transform").slice(10,-1);
+              d.x = trans.split(",")[0];
+              d.y = trans.split(",")[1];
+        })
+
+
+
+        var convexHull = svg.append("g")
+          .attr("class",'hull');
+          
+
+          var hulls = d3.nest()
+                .key(function(d) { return d.categoria; })
+                .entries(datos);
+
+
+                
+          hulls.forEach(function(h){
+
+              hullsPolygons[h.key] = d3.polygonHull(h.values.map(function(d) { 
+                  d.y = d.y - (-10);
+                  d.x = d.x - (-5);
+                  return [d.x,d.y]; }) );  
+          });
+
+            
+
+
+          updateCiudades(users);
+
+    
 
       }
 
 
 
-
           function updateCiudades(){
-                    var gps = gpsLayer.selectAll("g")
-                          .data(users);
 
+                    var gps = gpsLayer.selectAll("g").data(users);
 
-                    gps.enter()
-                          .append("g")
-                          .attr("transform", function(d){
-                                        return svg.select('[id="CENTRO"]').attr("transform");
-                          })
+                    var nodes = gps.enter()
+                          .append("g");
+                          nodes.attr("transform", function(d){
+                                        return "translate("+ (centro[0]+(Math.random()-0.5)*50) +","+ (centro[1]+(Math.random()-0.5)*50) + ")";
+                          });
+
+                      nodes
                           .append("circle")
                           .attr("r",0)
+                          .style("fill",function(d,k){
+                                        return colorScale(k);
+                          })
                           .attr("class","gps")
-                          .transition().duration(300).attr("r",5)
+                          .transition().duration(500).ease(d3.easeElastic).attr("r",8)
                           ;
+
+                      var textos = nodes.append("text");
 
                     gps.transition()
                         .duration(timeTrans)
                         .attr("transform", function(d,k){
                             if (d.idCity) return svg.select('[id="'+d.idCity+'"]').attr("transform");
-                            if (d.pcia) return "translate(100,"+( 100 + k*100) + ')';
-                            return svg.select('[id="CENTRO"]').attr("transform");
+                            if (d.pcia) {
+                              var randomPoint = d3.polygonCentroid(hullsPolygons[d.pcia]);
 
-                          });
+
+                              return "translate("+ randomPoint[0]+ ","+ randomPoint[1] + ')';
+                            }
+                            return "translate("+ (centro[0]+(Math.random()-0.5)*50) +","+ (centro[1]+(Math.random()-0.5)*50) + ")";
+                          })
+                        ;
+
+                     gps.selectAll("circle").transition()
+                        .duration(timeTrans)
+                        .style("opacity", function(d,k){
+                            if (d.idCity) return 3;
+                            if (d.pcia) return 5
+                            return 8;
+                          })
+                        ;
+
+                     
+                    // textos
+                    //     .text(function(d,k){
+                    //         if(d.idCity) return datos[d.idCity].titulo;
+                    //        // if(d.pcia) return d.pcia;
+                    //       })
+
+
+                 gps.exit().transition()
+                       .duration(timeTrans)
+                        .attr("opacity",0)
+                        .remove();
+                        ;
+
               }
+
+
+         
       
     </script>
   </body>
