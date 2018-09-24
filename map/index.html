@@ -1,11 +1,23 @@
 <!DOCTYPE html>
-<html>
+      <html lang="es">
   <head>
     <meta charset="utf-8">
     <title>IODC MAP</title>
+
+      <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+                                                              
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    
+
     <script src="//d3js.org/d3.v4.min.js" charset="utf-8"></script>
     <script src="https://iodc-map.herokuapp.com/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+
+
+    <link rel="stylesheet" href="https://gcba.github.io/BAstrap/bastrap/bastrap.css">
+   
     <style>
 
       /* Make the chart container fill the page using CSS. */
@@ -17,6 +29,27 @@
         bottom: 0px;
       }
 
+        body{
+            margin: 0;
+            background-color: #96daea;
+      }
+  svg text, svg tspan{
+            font-family: "CHANEWEI", Helvetica, Arial, sans-serif; 
+      }
+
+      .headerMap{
+            position: fixed;
+                width: 100%;
+      }
+
+      .headerMap .container{
+        margin-left: 20px;
+      }
+
+      .headerMap h3{
+        margin-bottom: 4px;
+        margin-top: 14px
+      }
       .gps{
         stroke:black;
         fill:red;
@@ -24,7 +57,24 @@
     </style>
   </head>
   <body>
-
+<header class="navbar navbar-primary navbar-top headerMap">
+      
+        <div class="container">
+          <div class="row">
+            <div class="col-md-2 col-xs-2 no_padding">
+                <img src="https://gcba.github.io/BAstrap/images/ba_logo.png" style="margin-top: 14px">      
+            </div>
+            <div class="col-md-8 col-xs-8 no_padding">
+      
+              <h3 >Buenos Aires Data</h3>
+              <p>Explorá los datos abiertos de la Ciudad de una nueva manera<p>
+            </div>
+      
+      
+          </div>
+        </div>
+            
+      </header>
     <div id="vis"></div>
 
     <script>
@@ -63,15 +113,6 @@ var svg, origin, gpsLayer, gps, timeTrans = 1000,circles;
 
     d3.queue()
           .defer(d3.xml, "mapa-arranged-full-notext3.svg")
-          // .defer(function () {
-          //   d3.xml("mapa-arranged-full-notext3.svg").mimeType("image/svg+xml").get(function(xml) {
-          //       var importedNode = document.importNode(xml.documentElement, true);
-          //       d3.select("div#vis")
-          //         .each(function() {
-          //           this.appendChild(importedNode);
-          //         })
-          //       });
-          // })
           .defer(d3.csv, "metadatos.csv")
           .awaitAll(dibuja);
 

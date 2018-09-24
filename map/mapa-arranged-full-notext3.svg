@@ -4146,7 +4146,7 @@
          id="rect27802"
          height="748"
          width="1092"
-         style="fill:#96daea;stroke:#000000;stroke-width:0.40000001;stroke-miterlimit:10"
+         style="fill:#96daea"
          x="0"
          y="0" />
       <path
@@ -4278,12 +4278,12 @@
          transform="translate(129.2729,580.1215)">
         <tspan
            id="tspan27865"
-           style="font-size:12px;font-family:Taviraj-Regular"
+           style="font-size:12px;"
            y="0"
            x="0">PENÍNSULA</tspan>
         <tspan
            id="tspan27867"
-           style="font-size:12px;font-family:Taviraj-Regular"
+           style="font-size:12px;"
            y="12"
            x="4.6999998">DE OBRAS</tspan>
       </text>
@@ -4292,12 +4292,12 @@
          transform="translate(973.5991,407.0847)">
         <tspan
            id="tspan27875"
-           style="font-size:12px;font-family:Taviraj-Regular"
+           style="font-size:12px;"
            y="0"
            x="0">COSTA</tspan>
         <tspan
            id="tspan27881"
-           style="font-size:12px;font-family:Taviraj-Regular"
+           style="font-size:12px;"
            y="12"
            x="0">SEGURIDAD</tspan>
       </text>
@@ -4313,7 +4313,7 @@
            startOffset="66.510004%"
            xlink:href="#SVGID_x5F_1_x5F_"><tspan
    id="tspan27890"
-   style="font-size:12px;font-family:Taviraj-Regular">VALLE DEL AMBIENTE</tspan>
+   style="font-size:12px;">VALLE DEL AMBIENTE</tspan>
 </textPath>
       </text>
       <path
@@ -4328,7 +4328,7 @@
            startOffset="36.468497%"
            xlink:href="#SVGID_x5F_2_x5F_"><tspan
    id="tspan27897"
-   style="font-size:12px;font-family:Taviraj-Regular">ACTIVIDAD ECONÓMICA</tspan>
+   style="font-size:12px;">ACTIVIDAD ECONÓMICA</tspan>
 </textPath>
       </text>
       <path
@@ -4343,7 +4343,7 @@
            startOffset="54.602003%"
            xlink:href="#SVGID_x5F_3_x5F_"><tspan
    id="tspan27904"
-   style="font-size:12px;font-family:Taviraj-Regular">PUNTA URBANA</tspan>
+   style="font-size:12px;">PUNTA URBANA</tspan>
 </textPath>
       </text>
       <path
@@ -4358,7 +4358,7 @@
            startOffset="38.736001%"
            xlink:href="#SVGID_x5F_4_x5F_"><tspan
    id="tspan27911"
-   style="font-size:12px;font-family:Taviraj-Regular">VILLA MOVILIDAD</tspan>
+   style="font-size:12px;">VILLA MOVILIDAD</tspan>
 </textPath>
       </text>
       <path
@@ -4373,7 +4373,7 @@
            startOffset="29.181001%"
            xlink:href="#SVGID_x5F_5_x5F_"><tspan
    id="tspan27918"
-   style="font-size:12px;font-family:Taviraj-Regular">LA SALUD</tspan>
+   style="font-size:12px;">LA SALUD</tspan>
 </textPath>
       </text>
       <path
@@ -4388,7 +4388,7 @@
            startOffset="47.0155%"
            xlink:href="#SVGID_x5F_6_x5F_"><tspan
    id="tspan27925"
-   style="font-size:12px;font-family:Taviraj-Regular">EDUCACIÓN</tspan>
+   style="font-size:12px;">EDUCACIÓN</tspan>
 </textPath>
       </text>
       <path
@@ -4403,7 +4403,7 @@
            startOffset="26.294002%"
            xlink:href="#SVGID_x5F_7_x5F_"><tspan
    id="tspan27932"
-   style="font-size:12px;font-family:Taviraj-Regular">ADMINISTRALIA</tspan>
+   style="font-size:12px;">ADMINISTRALIA</tspan>
 </textPath>
       </text>
       <path
@@ -4418,10 +4418,10 @@
            startOffset="31.011999%"
            xlink:href="#SVGID_x5F_8_x5F_"><tspan
    id="tspan27939"
-   style="font-size:12px;font-family:Taviraj-Regular">TIERRA DE LA CULTURA</tspan>
+   style="font-size:12px;">TIERRA DE LA CULTURA</tspan>
 </textPath>
       </text>
-      <path
+<!--       <path
          d="m 9.3,161.8 c 27.3,-37 211,-140 407.4,-114.3"
          style="fill:none"
          id="SVGID_x5F_9_x5F_"
@@ -4433,9 +4433,9 @@
            startOffset="30.664%"
            xlink:href="#SVGID_x5F_9_x5F_"><tspan
    id="tspan27946"
-   style="font-size:12px;font-family:Taviraj-Regular">MAR DE METADATOS</tspan>
+   style="font-size:12px;">MAR DE METADATOS</tspan>
 </textPath>
-      </text>
+      </text> -->
     </g>
     <g
        id="limits">
