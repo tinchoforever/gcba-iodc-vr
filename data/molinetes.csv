@@ -1,4 +1,4 @@
-periodo,fecha,desde,hasta,linea,molinete,estacion,pax_pagos,pax_pases_pagos,pax_franq,total
+periodo,fecha,desde,hasta,linea,molinete,estacion,pagos,pases_pagos,franq,total
 201801,01/01/2018,08:00:00,08:15:00,LINEA_A,LINEA_A_CBARROS_S_TURN01,CASTRO BARROS,1,0,0,1
 201801,01/01/2018,08:00:00,08:15:00,LINEA_A,LINEA_A_LIMA_S_TURN03,LIMA,4,0,0,4
 201801,01/01/2018,08:00:00,08:15:00,LINEA_A,LINEA_A_PASCO_TURN01,PASCO,1,0,0,1

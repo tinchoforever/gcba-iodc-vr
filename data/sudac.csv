@@ -1,4 +1,4 @@
-contacto,categoria,subcategoria,concepto,tipo_prestacion,fecha_ingreso,domicilio_barrio,domicilio_calle,domicilio_altura,canal,genero,estado_del_contacto
+contacto,categoria,subcategoria,concepto,tipo_prestacion,fecha_ingreso,domicilio_barrio,domicilio_calle,domicilio_altura,canal,genero,estado_contacto
 00000001/18,TRÁNSITO,DENUNCIA VIAL,VEHÍCULO MAL ESTACIONADO,DENUNCIA,2018-01-01,NUÑEZ,"PAZ, GRAL. AV.",1020,App,masculino,Cerrado
 00000002/18,TRÁNSITO,DENUNCIA VIAL,VEHÍCULO MAL ESTACIONADO,DENUNCIA,2018-01-01,NUÑEZ,VEDIA,2225,App,masculino,Cerrado
 00000003/18,TRÁNSITO,DENUNCIA VIAL,VEHÍCULO MAL ESTACIONADO,DENUNCIA,2018-01-01,NUÑEZ,VUELTA DE OBLIGADO,4759,App,masculino,Cerrado
