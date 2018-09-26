@@ -37,18 +37,16 @@
         
         
         <img id="administracion-sphere" crossorigin="anonymous" src="stories/01/borges/img/bgEscena1.jpg">
-        <img id="salud-sphere" crossorigin="anonymous" src="stories/01/eternauta/02-01-devoto-4.jpg">
-        <img id="ambiente-sphere" crossorigin="anonymous" src="stories/01/santelmo/img/bgEscena1.jpg">
+  
+        <img id="ambiente-sphere" crossorigin="anonymous" src="images/360-detail/espacios-verdes/02.png">
          <img id="obra-sphere" crossorigin="anonymous" src="images/360-detail/obras/5100-d.png">
-        <img id="salud-sphere" crossorigin="anonymous" src="stories/01/eternauta/02-01-devoto-4.jpg">
-        <img id="ambiente-sphere" crossorigin="anonymous" src="stories/01/santelmo/img/bgEscena1.jpg">
-         <img id="cultura-sphere" crossorigin="anonymous" src="stories/01/borges/img/bgEscena1.jpg">
-        <img id="salud-sphere" crossorigin="anonymous" src="stories/01/eternauta/02-01-devoto-4.jpg">
-        <img id="educacion-sphere" crossorigin="anonymous" src="stories/01/eternauta/02-01-devoto-4.jpg">
+        <img id="cultura-sphere" crossorigin="anonymous" src="stories/01/borges/img/bgEscena1.jpg">
+        <img id="salud-sphere" crossorigin="anonymous" src="images/360-detail/obras/58-d.png">
+        <img id="educacion-sphere" crossorigin="anonymous" src="images/360-detail/espacios-verdes/04.png">
          <img id="urbanismo-sphere" crossorigin="anonymous" src="stories/01/borges/img/bgEscena1.jpg">
-          <img id="seguridad-sphere" crossorigin="anonymous" src="stories/01/santelmo/img/bgEscena1.jpg">
+          <img id="seguridad-sphere" crossorigin="anonymous" src="stories/01/borges/img/bgEscena1.jpg">
          <img id="movilidad-sphere" crossorigin="anonymous" src="stories/01/eternauta/02-01-devoto-4.jpg">
-         <img id="actividad_economica-sphere" crossorigin="anonymous" src="stories/01/santelmo/img/bgEscena1.jpg">
+         <img id="actividad_economica-sphere" crossorigin="anonymous" src="images/360-detail/obras/25130-d.png">
           
 
         <img id="lobby" crossorigin="anonymous" src="images/lobby/00.png">
@@ -98,7 +96,7 @@
           <a-entity>
           
           {% if loopIndex == 0 %}
-            <a-entity opacity="1" position="0 -1.195 0" layout="type: circle; radius: 6; plane:xz;" opacity="0">
+            <a-entity opacity="1" position="0 -1.195 0" layout="type: circle; radius: 4; plane:xz;" opacity="0">
               {% for x in range(0,4) %}
                 <a-entity look-at="[camera]" geometry="primitive: plane; width: 5; height: 0.5;" material="shader: flat; color: black" sound="on: click; src: #click-sound"
                     position="0 0 0" color="black">
@@ -128,7 +126,7 @@
 
                
             </a-entity>
-            <a-sky radius="6" src="images/360-detail/{{currentDetail.code}}/{{row.imagen}}" color="white" opacity="1">
+            <a-sky radius="10" src="images/360-detail/{{currentDetail.code}}/{{row.imagen}}" color="white" opacity="1">
                <a-animation attribute="opacity" 
                 delay="{{(loopIndex+1)*10000}}"
                  dur="10000"
@@ -136,7 +134,7 @@
                  to="0"></a-animation>
             </a-sky>
             {% else %}
-            <a-entity opacity="0" position="0 -1.195 0" layout="type: circle; radius: 6; plane:xz;" opacity="0">
+            <a-entity opacity="0" position="0 -1.195 0" layout="type: circle; radius: 4; plane:xz;" opacity="0">
               {% for x in range(0,4) %}
                   <a-entity look-at="[camera]" opacity="0" geometry="primitive: plane; width: 5; height: 0.5;" material="shader: flat; color: black" 
                       sound="on: click; src: #click-sound"
@@ -173,7 +171,7 @@
               {% endfor %}
               
             </a-entity>
-             <a-sky radius="6" src="images/360-detail/{{currentDetail.code}}/{{row.imagen}}" color="white" opacity="0" visible="false">
+             <a-sky radius="10" src="images/360-detail/{{currentDetail.code}}/{{row.imagen}}" color="white" opacity="0" visible="false">
               <a-animation attribute="visible" 
                  begin="{{loopIndex*10000}}"
                  dur="1"
@@ -502,7 +500,7 @@
 
 
       <!-- 360-degree image. -->
-      <a-sky id="image-360" rotation="0 14 0" radius="10" src="#lobby" color="white"></a-sky>
+      <a-sky id="image-360" rotation="0 14 0" radius="12" src="#lobby" color="white"></a-sky>
       <!-- Miradas Logo -->
        <a-entity  id="circle-floor" 
        go-to-lobby="on: click; target: #image-360; src: #lobby;"
