@@ -4,8 +4,8 @@
 var env = new nunjucks.Environment();
 
 var random = Math.random();
-var socket = io("https://iodc-map.herokuapp.com");
-
+// var socket = io("https://iodc-map.herokuapp.com");
+var socket  = { emit : function(){} };
       
    
 	
